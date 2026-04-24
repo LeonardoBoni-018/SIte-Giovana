@@ -1,0 +1,13 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="320" rx="40" fill="#F8F0EB"/>
+  <path d="M50 165C55 142 73 120 97 105" stroke="#8B5F49" stroke-width="6" stroke-linecap="round"/>
+  <path d="M102 108C124 98 148 100 166 116" stroke="#8B5F49" stroke-width="6" stroke-linecap="round"/>
+  <path d="M170 115C190 130 205 150 210 175" stroke="#8B5F49" stroke-width="6" stroke-linecap="round"/>
+  <path d="M215 178C214 200 205 218 190 233" stroke="#8B5F49" stroke-width="6" stroke-linecap="round"/>
+  <path d="M120 210C112 220 100 226 88 227" stroke="#8B5F49" stroke-width="6" stroke-linecap="round"/>
+  <path d="M80 237C94 235 108 229 118 220" stroke="#8B5F49" stroke-width="6" stroke-linecap="round"/>
+  <line x1="74" y1="103" x2="246" y2="103" stroke="#8B5F49" stroke-width="8"/>
+  <line x1="74" y1="235" x2="246" y2="235" stroke="#8B5F49" stroke-width="8"/>
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="#8B5F49" font-family="Playfair Display, serif" font-size="120">G</text>
+  <text x="50%" y="16%" dominant-baseline="middle" text-anchor="middle" fill="#8B5F49" font-family="Inter, sans-serif" font-size="16" letter-spacing="0.36em">FRAMES BY GI</text>
+</svg>
