@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import SocialButton from '../components/SocialButton';
-import logoUrl from '../assets/logo.svg';
+import LogoBadge from '../components/LogoBadge';
 
 export default function Home() {
   return (
@@ -33,8 +33,8 @@ export default function Home() {
           <div className="relative space-y-6">
             <div className="rounded-[28px] bg-sand p-10 text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-rosewood/70">Logotipo</p>
-              <div className="mx-auto mt-8 flex h-28 w-28 items-center justify-center rounded-full border border-rosewood/20 bg-ivory p-4">
-                <img src={logoUrl} alt="Frames by Gi logo" className="h-full w-full object-contain" />
+              <div className="mx-auto mt-8">
+                <LogoBadge size={112} className="rounded-full border border-rosewood/20 bg-ivory p-3" />
               </div>
               <p className="mt-6 text-sm leading-7 text-[#5c4232]">A logo da marca agora está aplicada no site.</p>
             </div>

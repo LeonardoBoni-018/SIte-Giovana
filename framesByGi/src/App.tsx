@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Services from './pages/Services';
 import SocialButton from './components/SocialButton';
-import logoUrl from './assets/logo.svg';
+import LogoBadge from './components/LogoBadge';
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -22,7 +22,7 @@ function App() {
       <header className="sticky top-0 z-50 border-b border-[#dcb8aa] bg-ivory/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-4">
-            <img src={logoUrl} alt="Frames by Gi logo" className="h-14 w-14 rounded-3xl border border-rosewood/10 bg-ivory p-2" />
+            <LogoBadge size={56} />
             <div>
               <span className="block text-xs uppercase tracking-[0.45em] text-rosewood">Frames by Gi</span>
               <span className="font-serif text-2xl font-semibold">Story Maker</span>
