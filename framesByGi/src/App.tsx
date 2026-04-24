@@ -45,8 +45,8 @@ function App() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <SocialButton label="Instagram" href="https://instagram.com" />
-            <SocialButton label="WhatsApp" href="https://wa.me/" />
+            <SocialButton label="Instagram" href="https://www.instagram.com/frames_by_gi/" />
+            <SocialButton label="WhatsApp" href="https://wa.me/5518996048185" />
           </div>
         </div>
       </header>

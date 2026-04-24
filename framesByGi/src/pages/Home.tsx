@@ -18,8 +18,8 @@ export default function Home() {
             Story maker para creators, casamentos e marcas que buscam um feed leve, elegante e com narrativa visual.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <SocialButton label="Instagram" href="https://instagram.com" />
-            <SocialButton label="WhatsApp" href="https://wa.me/" />
+            <SocialButton label="Instagram" href="https://www.instagram.com/frames_by_gi/" />
+            <SocialButton label="WhatsApp" href="https://wa.me/5518996048185" />
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export default function Home() {
             <h2 className="section-title mt-3 text-3xl font-semibold text-mocha">Vamos criar stories com personalidade.</h2>
           </div>
           <a
-            href="https://wa.me/"
+            href="https://wa.me/5518996048185"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-3 rounded-full bg-rosewood px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg shadow-rosewood/15 transition hover:bg-mocha"
