@@ -4,8 +4,8 @@ import SectionHeader from '../components/SectionHeader';
 
 const highlights = [
   {
-    title: 'Paixão pelo detalhe',
-    description: 'Cada story é pensado para ser ao mesmo tempo elegante e estrategicamente alinhado ao seu público.',
+    title: 'Olhar para os detalhes',
+    description: 'Cada foto e vídeo é pensado para registrar não só o momento, mas também a emoção que existe em cada detalhe.',
     icon: <FiHeart size={20} />
   },
   {
@@ -24,21 +24,21 @@ export default function About() {
   return (
     <section className="space-y-16">
       <SectionHeader
-        title="Sobre Frames by Gi"
+        title="Sobre o Frames by Gi"
         subtitle="Minha história"
-        description="Transformo conteúdo em narrativas visuais elegantes que conectam pessoas e fortalecem marcas no Instagram."
+        description=""
       />
 
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
         <div className="space-y-6 rounded-[40px] border border-white/80 bg-white/90 p-10 card-shadow">
           <p className="text-sm leading-7 text-[#5c4232]">
-            O Frames by Gi nasceu da paixão por transformar momentos em narrativas visuais. Cada projeto é feito com atenção ao estilo, à emoção e às referências pessoais de cada cliente.
+            O Frames by Gi nasceu do meu olhar para aquilo que muitas vezes passa despercebido: os detalhes, os sentimentos e a essência de cada momento.
           </p>
           <p className="text-sm leading-7 text-[#5c4232]">
-            Acreditamos no poder de um stories bem construído: ele aproxima, inspira e transforma seguidores em públicos engajados.
+            O que começou como uma paixão por registrar memórias se transformou em um trabalho feito com propósito — criando fotos e vídeos que permitem reviver histórias de forma leve, natural e verdadeira.
           </p>
           <p className="text-sm leading-7 text-[#5c4232]">
-            Trabalhamos com uma linguagem visual delicada, minimalista e moderna para que seu conteúdo se destaque com naturalidade.
+            Hoje, cada registro carrega um pouco da minha dedicação, do meu cuidado e da minha forma de enxergar a beleza nos momentos reais.
           </p>
         </div>
 
@@ -51,22 +51,28 @@ export default function About() {
 
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 card-shadow">
-          <h3 className="section-title text-3xl font-semibold text-mocha">Como trabalho</h3>
+          <h3 className="section-title text-3xl font-semibold text-mocha">Como eu trabalho</h3>
           <p className="mt-4 text-sm leading-7 text-[#5c4232]">
-            Do briefing à entrega, cada etapa é pensada para garantir estética, consistência e resultados reais para seus stories.
+            Do briefing à entrega, cada etapa é pensada e estruturada para garantir um resultado que vá além do visual:
           </p>
           <ul className="mt-6 space-y-4 text-sm leading-7 text-[#5c4232]">
-            <li>• Levantamento do briefing e estilo visual</li>
-            <li>• Criação de conceito para sequência de stories</li>
-            <li>• Produção de artes com identidade própria</li>
-            <li>• Entrega pronta para publicação e revisão</li>
+            <li>• Contato inicial com o cliente e escolha do serviço que melhor atenda às suas necessidades;</li>
+            <li>• Alinhamento das expectativas;</li>
+            <li>• Captação dos elementos visuais;</li>
+            <li>• Edição minuciosa;</li>
+            <li>• Feedbacks e ajustes finais;</li>
+            <li>• Entrega dos arquivos finalizados em alta resolução.</li>
+            
           </ul>
         </div>
 
         <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 card-shadow">
-          <h3 className="section-title text-3xl font-semibold text-mocha">Por que escolher o Frames?</h3>
+          <h3 className="section-title text-3xl font-semibold text-mocha">Por que escolher o Frames by Gi?</h3>
           <p className="mt-4 text-sm leading-7 text-[#5c4232]">
-            Atendimento próximo, entregas rápidas e um acabamento visual que eleva sua presença digital com suavidade e estilo.
+            <li> Olhar sensível para os detalhes;</li>
+            <li> Compromisso com a qualidade e a originalidade;</li>
+            <li> Atendimento personalizado e proximidade com o cliente;</li>
+            <li> Entregas rápidas e um acabamento visual que eleva sua presença digital com suavidade e estilo.</li>
           </p>
         </div>
       </div>

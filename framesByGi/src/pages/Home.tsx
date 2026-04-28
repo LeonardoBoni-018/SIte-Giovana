@@ -7,18 +7,18 @@ import FeatureCard from '../components/FeatureCard';
 
 const stats = [
   {
-    title: 'Design com propósito',
-    description: 'Cada sequência é pensada para comunicar sua intenção e valorizar sua imagem.',
+    title: 'Atenção aos Detalhes',
+    description: 'Produção de fotos e vídeos personalizada, com foco nos detalhes e na demanda do cliente.',
     icon: <FiLayers size={20} />
   },
   {
-    title: 'Entrega rápida',
-    description: 'Produção ágil para campanhas, casamentos e lançamentos com prazo seguro.',
+    title: 'Atendimento Rápido',
+    description: 'Comunicação dedicada via WhatsApp para garantir agilidade e clareza em cada etapa do processo.',
     icon: <FiClock size={20} />
   },
   {
-    title: 'Resultados visíveis',
-    description: 'Stories com estética premium que aumentam o engajamento e a percepção da marca.',
+    title: 'Entrega Ágil',
+    description: 'Entrega rápida e eficiente, com foco em agilidade, organização e cumprimento consistente dos prazos definidos.',
     icon: <FiTrendingUp size={20} />
   }
 ];
@@ -51,10 +51,10 @@ export default function Home() {
           </span>
           <div className="space-y-6">
             <h1 className="section-title max-w-3xl text-5xl font-semibold leading-tight text-mocha sm:text-6xl">
-              Histórias digitais com estética refinada e impacto estratégico.
+              Transformo momentos em memórias através de fotos e vídeos que contam histórias
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-[#5c4232]">
-              Story maker para creators, casamentos e marcas que querem conteúdo sofisticado, relevante e pronto para atrair olhares.
+              Registros pensados para eternizar cada detalhe com sensibilidade, leveza e intenção
             </p>
           </div>
 
@@ -65,13 +65,13 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-[28px] border border-white/80 bg-white/90 p-5 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-              Identidade visual alinhada à sua marca
+              Fotografia Mobile
             </div>
             <div className="rounded-[28px] border border-white/80 bg-white/90 p-5 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-              Sequências prontas para publicar no Instagram
+              Videomaker
             </div>
             <div className="rounded-[28px] border border-white/80 bg-white/90 p-5 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-              Atendimento personalizado para cada projeto
+              Storymaker
             </div>
           </div>
         </div>
@@ -130,8 +130,8 @@ export default function Home() {
       <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 shadow-[0_18px_50px_rgba(75,52,36,0.08)]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-rosewood/80">Vamos iniciar seu projeto</p>
-            <h2 className="section-title text-3xl font-semibold text-mocha">Transforme seus stories em conteúdo memorável.</h2>
+            <p className="text-sm uppercase tracking-[0.35em] text-rosewood/80">Vamos eternizar o seu momento?</p>
+            <h2 className="section-title text-3xl font-semibold text-mocha">Solicite o seu orçamento</h2>
           </div>
           <a
             href="https://wa.me/5518996048185"

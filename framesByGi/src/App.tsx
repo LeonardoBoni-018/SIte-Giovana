@@ -71,7 +71,7 @@ function App() {
       </AnimatePresence>
 
       <footer className="border-t border-[#dcb8aa] bg-ivory px-6 py-8 text-center text-sm text-rosewood/90">
-        <p>Frames by Gi — Stories elegantes para marcas, casamentos e momentos especiais.</p>
+        <p>Frames by Gi — Histórias visuais com leveza, sensibilidade e intenção.</p>
       </footer>
     </div>
   );

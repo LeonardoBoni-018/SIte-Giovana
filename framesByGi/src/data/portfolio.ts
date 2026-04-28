@@ -1,17 +1,17 @@
 export const portfolioItems = [
   {
-    title: 'Cobertura - Stories Casamento',
-    category: 'Casamento',
-    description: 'Sequência de stories para evento de casamento com paleta suave e narrativa de momento.'
+    title: '',
+    category: 'Pré-Wedding',
+    description: 'Fotos feitas pelo celular, com edição leve e natural, para contar a história do casal de forma autêntica e delicada.'
   },
   {
-    title: 'Antes x Depois Estúdio',
-    category: 'Transformação',
-    description: 'Conteúdo visual mostrando o processo de edição e o resultado final em formato elegante.'
+    title: '',
+    category: 'Ensaio feminino',
+    description: 'Registros pensados para destacar a beleza única de cada mulher e sua história.'
   },
   {
-    title: 'Stories de Lançamento',
-    category: 'Marca',
-    description: 'Série de stories para divulgação de lançamento com identidade minimalista e detalhista.'
+    title: '',
+    category: 'Ensaio infantil',
+    description: 'Cada clique é pensado para capturar a essência e a espontaneidade das crianças, criando memórias visuais que duram para sempre.'
   }
 ];
