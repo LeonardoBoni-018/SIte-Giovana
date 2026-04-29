@@ -44,67 +44,39 @@ const steps = [
 export default function Home() {
   return (
     <section className="space-y-20">
-      <div className="grid gap-10 lg:grid-cols-[1.2fr_0.95fr] lg:items-center">
-        <div className="space-y-8">
-          <span className="inline-flex rounded-full bg-rosewood/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-rosewood">
-            Frames by Gi
-          </span>
-          <div className="space-y-6">
-            <h1 className="section-title max-w-3xl text-5xl font-semibold leading-tight text-mocha sm:text-6xl">
-              Transformo momentos em memórias através de fotos e vídeos que contam histórias
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-[#5c4232]">
-              Registros pensados para eternizar cada detalhe com sensibilidade, leveza e intenção
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <SocialButton label="Instagram" href="https://www.instagram.com/frames_by_gi/" />
-            <SocialButton label="WhatsApp" href="https://wa.me/5518996048185" />
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-[28px] border border-white/80 bg-white/90 p-5 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-              Fotografia Mobile
-            </div>
-            <div className="rounded-[28px] border border-white/80 bg-white/90 p-5 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-              Videomaker
-            </div>
-            <div className="rounded-[28px] border border-white/80 bg-white/90 p-5 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-              Storymaker
-            </div>
-          </div>
+      <div className="space-y-10 text-center">
+        <div className="flex justify-center">
+          <LogoBadge size={138} className="rounded-full border border-rosewood/20 bg-ivory p-4" />
+        </div>
+        <span className="inline-flex rounded-full bg-rosewood/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-rosewood">
+          Frames by Gi
+        </span>
+        <div className="space-y-6">
+          <h1 className="section-title mx-auto max-w-[5000px] text-5xl font-semibold leading-tight text-mocha sm:text-6xl">
+            Transformo momentos em memórias através de fotos e vídeos que contam histórias
+          </h1>
+          <p className="mx-auto max-w-[1000px] text-lg leading-8 text-[#5c4232]">
+            Registros pensados para eternizar cada detalhe com sensibilidade, leveza e intenção
+          </p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-[40px] border border-white/80 bg-white/80 p-8 shadow-[0_30px_80px_rgba(75,52,36,0.08)]"
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.8),transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(139,95,73,0.14),transparent_18%)]" />
-          <div className="relative space-y-10">
-            <div className="flex justify-center">
-              <LogoBadge size={138} className="rounded-full border border-rosewood/20 bg-ivory p-4" />
-            </div>
-            <div className="space-y-3 text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-rosewood/70">Identidade visual</p>
-              <h2 className="section-title text-3xl font-semibold text-mocha">Marca, stories e layouts que conversam entre si.</h2>
-              <p className="mx-auto max-w-md text-sm leading-7 text-[#5c4232]">
-                Experiência visual com estilo clean e elementos orgânicos para contar cada momento com elegância.
-              </p>
-            </div>
+        
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[28px] bg-ivory/95 p-6 text-sm leading-7 text-[#5c4232]">
-                Capas e ilustrações sutis para apresentação sofisticada.
-              </div>
-              <div className="rounded-[28px] bg-ivory/95 p-6 text-sm leading-7 text-[#5c4232]">
-                Composição e ritmo visual que valorizam sua mensagem.
-              </div>
-            </div>
+        <div className="flex flex-wrap justify-center gap-3">
+          <div className="min-w-[130px] rounded-full border border-white/80 bg-white/90 px-5 py-3 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
+            Fotografia Mobile
           </div>
-        </motion.div>
+          <div className="min-w-[130px] rounded-full border border-white/80 bg-white/90 px-5 py-3 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
+            Videomaker
+          </div>
+          <div className="min-w-[130px] rounded-full border border-white/80 bg-white/90 px-5 py-3 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
+            Storymaker
+          </div>
+        </div>
+        <div className="flex flex-wrap justify-center gap-3">
+          <SocialButton label="Instagram" href="https://www.instagram.com/frames_by_gi/" />
+          <SocialButton label="WhatsApp" href="https://wa.me/5518996048185" />
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
@@ -113,7 +85,7 @@ export default function Home() {
         ))}
       </div>
 
-      <section className="space-y-10">
+      {/* <section className="space-y-10">
         <SectionHeader
           title="Processo visual eficiente"
           subtitle="Como trabalhamos"
@@ -125,7 +97,7 @@ export default function Home() {
             <FeatureCard key={step.title} title={step.title} description={step.description} icon={step.icon} />
           ))}
         </div>
-      </section>
+      </section> */}
 
       <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 shadow-[0_18px_50px_rgba(75,52,36,0.08)]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">

@@ -1,9 +1,9 @@
 export const portfolioItems = [
-  {
-    title: '',
-    category: 'Pré-Wedding',
-    description: 'Fotos feitas pelo celular, com edição leve e natural, para contar a história do casal de forma autêntica e delicada.'
-  },
+  // {
+  //   title: '',
+  //   category: 'Pré-Wedding',
+  //   description: 'Fotos feitas pelo celular, com edição leve e natural, para contar a história do casal de forma autêntica e delicada.'
+  // },
   {
     title: '',
     category: 'Ensaio feminino',

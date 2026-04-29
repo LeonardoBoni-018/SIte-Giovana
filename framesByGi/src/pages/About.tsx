@@ -1,24 +1,26 @@
 import { FiCamera, FiHeart, FiStar } from 'react-icons/fi';
 import FeatureCard from '../components/FeatureCard';
 import SectionHeader from '../components/SectionHeader';
+import aboutMe1 from '../assets/aboutMe1.png';
+import aboutMe2 from '../assets/aboutMe2.png';
 
-const highlights = [
-  {
-    title: 'Olhar para os detalhes',
-    description: 'Cada foto e vídeo é pensado para registrar não só o momento, mas também a emoção que existe em cada detalhe.',
-    icon: <FiHeart size={20} />
-  },
-  {
-    title: 'Histórias com alma',
-    description: 'Conteúdos que comunicam emoção e criam conexões reais com quem acompanha seu perfil.',
-    icon: <FiStar size={20} />
-  },
-  {
-    title: 'Experiência visual',
-    description: 'Estética suave, tipografia refinada e harmonização de cores para um resultado premium.',
-    icon: <FiCamera size={20} />
-  }
-];
+// const highlights = [
+//   {
+//     title: 'Olhar para os detalhes',
+//     description: 'Cada foto e vídeo é pensado para registrar não só o momento, mas também a emoção que existe em cada detalhe.',
+//     icon: <FiHeart size={20} />
+//   },
+//   {
+//     title: 'Histórias com alma',
+//     description: 'Conteúdos que comunicam emoção e criam conexões reais com quem acompanha seu perfil.',
+//     icon: <FiStar size={20} />
+//   },
+//   {
+//     title: 'Experiência visual',
+//     description: 'Estética suave, tipografia refinada e harmonização de cores para um resultado premium.',
+//     icon: <FiCamera size={20} />
+//   }
+// ];
 
 export default function About() {
   return (
@@ -42,10 +44,28 @@ export default function About() {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-1">
-          {highlights.map((item) => (
-            <FeatureCard key={item.title} title={item.title} description={item.description} icon={item.icon} />
-          ))}
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div className="relative group overflow-hidden rounded-[36px] border border-white/80 bg-white/90 shadow-[0_22px_50px_rgba(75,52,36,0.08)] transition hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,52,36,0.14)]">
+            <img
+              src={aboutMe1}
+              alt="Sobre o Frames by Gi"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#5c4232]/90 to-transparent px-5 py-4 text-white">
+              <p className="text-xs uppercase tracking-[0.4em]">Estilo pessoal</p>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[36px] border border-white/80 bg-white/90 shadow-[0_22px_50px_rgba(75,52,36,0.08)] transition hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,52,36,0.14)] sm:-mt-10">
+            <img
+              src={aboutMe2}
+              alt="Fotografia autoral"
+              className="h-full w-full object-cover transition duration-500 hover:scale-105"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#5c4232]/90 to-transparent px-5 py-4 text-white">
+              <p className="text-xs uppercase tracking-[0.4em]">Narrativa visual</p>
+            </div>
+          </div>
         </div>
       </div>
 
