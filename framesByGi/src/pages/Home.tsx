@@ -43,43 +43,43 @@ const steps = [
 
 export default function Home() {
   return (
-    <section className="space-y-20">
-      <div className="space-y-10 text-center">
+    <section className="space-y-12 sm:space-y-16 lg:space-y-20">
+      <div className="space-y-8 sm:space-y-10 text-center px-3 sm:px-0">
         <div className="flex justify-center">
-          <LogoBadge size={138} className="rounded-full border border-rosewood/20 bg-ivory p-4" />
+          <LogoBadge size={100} className="sm:size-138 rounded-full border border-rosewood/20 bg-ivory p-3 sm:p-4" />
         </div>
-        <span className="inline-flex rounded-full bg-rosewood/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-rosewood">
+        <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.4em] text-rosewood">
           Frames by Gi
         </span>
-        <div className="space-y-6">
-          <h1 className="section-title mx-auto max-w-[5000px] text-5xl font-semibold leading-tight text-mocha sm:text-6xl">
+        <div className="space-y-5 sm:space-y-6">
+          <h1 className="section-title mx-auto max-w-3xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight text-mocha">
             Transformo momentos em memórias através de fotos e vídeos que contam histórias
           </h1>
-          <p className="mx-auto max-w-[1000px] text-lg leading-8 text-[#5c4232]">
+          <p className="mx-auto max-w-2xl text-sm sm:text-base leading-7 sm:leading-8 text-[#5c4232]">
             Registros pensados para eternizar cada detalhe com sensibilidade, leveza e intenção
           </p>
         </div>
 
         
 
-        <div className="flex flex-wrap justify-center gap-3">
-          <div className="min-w-[130px] rounded-full border border-white/80 bg-white/90 px-5 py-3 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          <div className="min-w-[110px] sm:min-w-[130px] rounded-full border border-white/80 bg-white/90 px-4 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
             Fotografia Mobile
           </div>
-          <div className="min-w-[130px] rounded-full border border-white/80 bg-white/90 px-5 py-3 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
+          <div className="min-w-[110px] sm:min-w-[130px] rounded-full border border-white/80 bg-white/90 px-4 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
             Videomaker
           </div>
-          <div className="min-w-[130px] rounded-full border border-white/80 bg-white/90 px-5 py-3 text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
+          <div className="min-w-[110px] sm:min-w-[130px] rounded-full border border-white/80 bg-white/90 px-4 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
             Storymaker
           </div>
         </div>
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
           <SocialButton label="Instagram" href="https://www.instagram.com/frames_by_gi/" />
           <SocialButton label="WhatsApp" href="https://wa.me/5518996048185" />
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {stats.map((item) => (
           <FeatureCard key={item.title} title={item.title} description={item.description} icon={item.icon} />
         ))}
@@ -99,20 +99,20 @@ export default function Home() {
         </div>
       </section> */}
 
-      <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 shadow-[0_18px_50px_rgba(75,52,36,0.08)]">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.35em] text-rosewood/80">Vamos eternizar o seu momento?</p>
-            <h2 className="section-title text-3xl font-semibold text-mocha">Solicite o seu orçamento</h2>
+      <div className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-6 sm:p-10 shadow-[0_18px_50px_rgba(75,52,36,0.08)]">
+        <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="space-y-3 sm:space-y-4">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-rosewood/80">Vamos eternizar o seu momento?</p>
+            <h2 className="section-title text-2xl sm:text-3xl font-semibold text-mocha">Solicite o seu orçamento</h2>
           </div>
           <a
             href="https://wa.me/5518996048185"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-3 rounded-full bg-rosewood px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg shadow-rosewood/15 transition hover:bg-mocha"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-rosewood px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg shadow-rosewood/15 transition hover:bg-mocha"
           >
             Falar no WhatsApp
-            <FiArrowRight />
+            <FiArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
         </div>
       </div>

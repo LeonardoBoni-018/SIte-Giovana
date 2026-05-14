@@ -71,50 +71,50 @@ const portfolioSections = [
 
 export default function Portfolio() {
   return (
-    <section className="space-y-16">
+    <section className="space-y-10 sm:space-y-14 lg:space-y-16">
       <SectionHeader
         title="Trabalhos"
         subtitle="Portfólio"
         // description="Carrosséis de fotos por tipo de trabalho, com visual elegante e apresentações interativas." 
       />
 
-      <div className="grid gap-12 lg:grid-cols-2">
+      <div className="grid gap-8 sm:gap-10 lg:grid-cols-2">
         {portfolioSections.map((section) => (
-          <article key={section.title} className="rounded-[40px] border border-white/80 bg-white/90 p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-            <div className="mb-8 text-center">
-              <span className="inline-flex rounded-full bg-rosewood/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
+          <article key={section.title} className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-5 sm:p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
+            <div className="mb-5 sm:mb-8 text-center">
+              <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
                 {section.title}
               </span>
               {/* <h2 className="section-title mx-auto mt-4 max-w-[16rem] text-3xl font-semibold text-mocha">{section.title}</h2> */}
-              <p className="mt-4 mx-auto max-w-2xl text-sm leading-7 text-[#5c4232]">{section.description}</p>
+              <p className="mt-3 sm:mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">{section.description}</p>
             </div>
 
             <GalleryCarousel images={section.images} alt={section.title} />
           </article>
         ))}
 
-        <article className="rounded-[40px] border border-white/80 bg-white/90 p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-          <div className="mb-8 text-center">
-            <span className="inline-flex rounded-full bg-rosewood/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
+        <article className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-5 sm:p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
+          <div className="mb-5 sm:mb-8 text-center">
+            <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
               StoryMaker
             </span>
             {/* <h2 className="section-title mx-auto mt-4 max-w-[16rem] text-3xl font-semibold text-mocha">
               StoryMaker
             </h2> */}
-            <p className="mt-4 mx-auto max-w-2xl text-sm leading-7 text-[#5c4232]">
-              Vídeo autoral StoryMaker com narrativa visual pensada para engajar e apresentar o estilo criativo do trabalho.
+            <p className="mt-3 sm:mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
+              Vídeo autoral StoryMaker com narrativa visual pensando para engajar e apresentar o estilo criativo do trabalho.
             </p>
           </div>
 
           <StoryMakerVideo src={storyMakerVideo} />
         </article>
 
-        <article className="rounded-[40px] border border-white/80 bg-white/90 p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-          <div className="mb-8 text-center">
-            <span className="inline-flex rounded-full bg-rosewood/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
+        <article className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-5 sm:p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
+          <div className="mb-5 sm:mb-8 text-center">
+            <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
               VideoMaker
             </span>
-            <p className="mt-4 mx-auto max-w-2xl text-sm leading-7 text-[#5c4232]">
+            <p className="mt-3 sm:mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
               Vídeo VideoMaker com cortes dinâmicos e acabamento profissional para divulgar serviços em redes sociais.
             </p>
           </div>
