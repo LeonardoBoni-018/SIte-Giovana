@@ -44,7 +44,7 @@ export default function GalleryCarousel({ images, alt = 'Portfolio image' }: Gal
           aria-label="Imagem anterior"
           className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 sm:p-3 text-rosewood shadow-lg shadow-rosewood/10 transition hover:bg-rosewood/10"
         >
-          <FiChevronLeft size={16} sm:size={20} />
+          <FiChevronLeft size={18} />
         </button>
         <button
           type="button"
@@ -52,7 +52,7 @@ export default function GalleryCarousel({ images, alt = 'Portfolio image' }: Gal
           aria-label="Próxima imagem"
           className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 sm:p-3 text-rosewood shadow-lg shadow-rosewood/10 transition hover:bg-rosewood/10"
         >
-          <FiChevronRight size={16} sm:size={20} />
+          <FiChevronRight size={18} />
         </button>
       </div>
 
