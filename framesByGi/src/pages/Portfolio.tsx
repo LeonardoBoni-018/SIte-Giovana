@@ -44,7 +44,7 @@ const portfolioSections = [
     images: [ensaioFeminino1, ensaioFeminino2, ensaioFeminino3, ensaioFeminino4]
   },
   {
-    title: 'Ensaio de criança',
+    title: 'Ensaio infantil',
     description:
       'Ensaio infantil com clima lúdico e afetivo, registrando brincadeiras e momentos espontâneos de cuidado.',
     images: [ensaioCrianca1, ensaioCrianca2, ensaioCrianca3, ensaioCrianca4, ensaioCrianca5, ensaioCrianca6]

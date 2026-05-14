@@ -3,29 +3,27 @@ import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import About from './pages/About';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
-import Services from './pages/Services';
 import SocialButton from './components/SocialButton';
 import LogoBadge from './components/LogoBadge';
 
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'Sobre', path: '/sobre' },
-  { label: 'Trabalhos', path: '/trabalhos' },
-  { label: 'Serviços', path: '/servicos' }
+  { label: 'Trabalhos', path: '/trabalhos' }
 ];
 
 function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-sand text-mocha">
+    <div className="min-h-screen bg-sand text-mocha font-sans">
       <header className="sticky top-0 z-50 border-b border-[#dcb8aa] bg-ivory/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-4">
             <LogoBadge size={56} />
-            <div>
+            <div className="flex flex-col items-center text-center">
               <span className="block text-xs uppercase tracking-[0.45em] text-rosewood">Frames by Gi</span>
-              <span className="font-serif text-2xl font-semibold">Story Maker</span>
+              <span className="font-serif text-2xl font-semibold">Fotos e vídeos mobile</span>
             </div>
           </div>
 
@@ -64,7 +62,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/sobre" element={<About />} />
             <Route path="/trabalhos" element={<Portfolio />} />
-            <Route path="/servicos" element={<Services />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </motion.main>

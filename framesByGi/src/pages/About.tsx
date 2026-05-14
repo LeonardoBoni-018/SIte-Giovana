@@ -56,7 +56,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-[36px] border border-white/80 bg-white/90 shadow-[0_22px_50px_rgba(75,52,36,0.08)] transition hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,52,36,0.14)] sm:-mt-10">
+          <div className="relative overflow-hidden rounded-[36px] border border-white/80 bg-white/90 shadow-[0_22px_50px_rgba(75,52,36,0.08)] transition hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,52,36,0.14)]">
             <img
               src={aboutMe2}
               alt="Fotografia autoral"
@@ -88,12 +88,12 @@ export default function About() {
 
         <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 card-shadow">
           <h3 className="section-title text-3xl font-semibold text-mocha">Por que escolher o Frames by Gi?</h3>
-          <p className="mt-4 text-sm leading-7 text-[#5c4232]">
-            <li> Olhar sensível para os detalhes;</li>
-            <li> Compromisso com a qualidade e a originalidade;</li>
-            <li> Atendimento personalizado e proximidade com o cliente;</li>
-            <li> Entregas rápidas e um acabamento visual que eleva sua presença digital com suavidade e estilo.</li>
-          </p>
+          <ul className="mt-6 space-y-4 text-sm leading-7 text-[#5c4232] list-disc list-inside">
+            <li>Olhar sensível para os detalhes;</li>
+            <li>Compromisso com a qualidade e a originalidade;</li>
+            <li>Atendimento personalizado e proximidade com o cliente;</li>
+            <li>Entregas rápidas e um acabamento visual que eleva sua presença digital com suavidade e estilo.</li>
+          </ul>
         </div>
       </div>
     </section>
