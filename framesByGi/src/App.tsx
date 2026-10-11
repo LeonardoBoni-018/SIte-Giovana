@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import BackToTop from './components/motion/BackToTop';
+import ScrollProgress from './components/motion/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
 import About from './pages/About';
 import Home from './pages/Home';
@@ -20,9 +22,10 @@ export default function App() {
         Pular para o conteúdo
       </a>
       <ScrollToTop />
+      <ScrollProgress />
       <Header />
 
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="wait">
         <motion.main
           id="conteudo"
           key={location.pathname}
@@ -41,6 +44,7 @@ export default function App() {
       </AnimatePresence>
 
       <Footer />
+      <BackToTop />
     </div>
   );
 }

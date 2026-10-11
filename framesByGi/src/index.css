@@ -55,6 +55,58 @@
   .print-frame {
     @apply bg-ivory p-1.5 shadow-print sm:p-2;
   }
+
+  /* Sublinhado que cresce da esquerda para a direita no hover/foco. */
+  .link-underline,
+  .link-underline-rest {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    padding-bottom: 0.15em;
+    transition: background-size 0.5s theme('transitionTimingFunction.out-expo');
+  }
+
+  /* Mesma ideia, mas com uma linha clara sempre visível indicando que é um link. */
+  .link-underline-rest {
+    background-image: linear-gradient(currentColor, currentColor),
+      linear-gradient(theme('colors.line'), theme('colors.line'));
+    background-size: 0% 1px, 100% 1px;
+  }
+
+  /* O foco fica no link (o pai .group), não no span com a classe. */
+  .link-underline:focus-visible,
+  .group:focus-visible .link-underline {
+    background-size: 100% 1px;
+  }
+
+  .link-underline-rest:focus-visible,
+  .group:focus-visible .link-underline-rest {
+    background-size: 100% 1px, 100% 1px;
+  }
+
+  /* Mesma condição do hoverOnlyWhenSupported do Tailwind. */
+  @media (hover: hover) and (pointer: fine) {
+    .link-underline:hover,
+    .group:hover .link-underline {
+      background-size: 100% 1px;
+    }
+
+    .link-underline-rest:hover,
+    .group:hover .link-underline-rest {
+      background-size: 100% 1px, 100% 1px;
+    }
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -67,5 +119,10 @@
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+
+  /* Uma animação infinita com duração quase zero piscaria; aqui a faixa fica parada. */
+  .marquee-track {
+    animation: none !important;
   }
 }

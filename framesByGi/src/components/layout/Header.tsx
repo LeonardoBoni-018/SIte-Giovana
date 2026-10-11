@@ -36,8 +36,8 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:h-[4.5rem] sm:px-8">
-        <Link to="/" className="flex items-center gap-3" aria-label={`${site.name}, página inicial`}>
-          <LogoBadge className="h-10 w-10 sm:h-11 sm:w-11" />
+        <Link to="/" className="group flex items-center gap-3" aria-label={`${site.name}, página inicial`}>
+          <LogoBadge className="h-10 w-10 transition-transform duration-700 ease-out-expo group-hover:-rotate-12 sm:h-11 sm:w-11" />
           <span className="leading-tight">
             <span className="block font-serif text-lg font-medium text-mocha sm:text-xl">{site.name}</span>
             <span className="block text-xs text-cocoa sm:text-[0.8rem]">{site.tagline}</span>
@@ -52,7 +52,7 @@ export default function Header() {
                   to={item.path}
                   end={item.path === '/'}
                   className={({ isActive }) =>
-                    `relative block px-4 py-2 text-[0.95rem] transition-colors ${
+                    `group relative block px-4 py-2 text-[0.95rem] transition-colors ${
                       isActive ? 'text-mocha' : 'text-cocoa hover:text-mocha'
                     }`
                   }
@@ -60,6 +60,8 @@ export default function Header() {
                   {({ isActive }) => (
                     <>
                       {item.label}
+                      {/* Linha clara que cresce no hover; a ativa desliza por cima dela. */}
+                      <span className="absolute inset-x-4 -bottom-px h-px origin-left scale-x-0 bg-line transition-transform duration-500 ease-out-expo group-hover:scale-x-100" />
                       {isActive && (
                         <motion.span
                           layoutId="nav-indicator"
@@ -81,17 +83,17 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="grid h-10 w-10 place-items-center rounded-full text-rosewood transition-colors hover:bg-sand hover:text-mocha"
+            className="group grid h-10 w-10 place-items-center rounded-full text-rosewood transition-colors hover:bg-sand hover:text-mocha"
           >
-            <FiInstagram size={19} aria-hidden />
+            <FiInstagram size={19} aria-hidden className="transition-transform duration-500 ease-out-expo group-hover:scale-110" />
           </a>
           <a
             href={site.whatsapp.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 inline-flex min-h-10 items-center gap-2 rounded-full bg-rosewood px-4 text-sm font-medium text-ivory transition-colors hover:bg-mocha"
+            className="group ml-2 inline-flex min-h-10 items-center gap-2 rounded-full bg-rosewood px-4 text-sm font-medium text-ivory transition-[background-color,transform,box-shadow] duration-300 ease-out-expo hover:-translate-y-0.5 hover:bg-mocha hover:shadow-print"
           >
-            <FaWhatsapp size={17} aria-hidden />
+            <FaWhatsapp size={17} aria-hidden className="transition-transform duration-500 ease-out-expo group-hover:-rotate-12 group-hover:scale-110" />
             WhatsApp
           </a>
         </div>

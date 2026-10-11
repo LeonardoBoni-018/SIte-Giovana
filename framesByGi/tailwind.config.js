@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // Efeitos de hover só em dispositivos com mouse; no celular o toque não deixa o hover "preso".
+  future: {
+    hoverOnlyWhenSupported: true
+  },
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {

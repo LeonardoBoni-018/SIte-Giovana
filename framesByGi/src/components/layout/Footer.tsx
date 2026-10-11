@@ -23,7 +23,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             {navItems.map((item) => (
               <li key={item.path}>
-                <Link to={item.path} className="text-cocoa hover:text-mocha hover:underline">
+                <Link to={item.path} className="link-underline text-cocoa transition-colors hover:text-mocha">
                   {item.label}
                 </Link>
               </li>
@@ -39,10 +39,10 @@ export default function Footer() {
                 href={site.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-cocoa hover:text-mocha hover:underline"
+                className="group inline-flex items-center gap-2 text-cocoa transition-colors hover:text-mocha"
               >
                 <FiInstagram aria-hidden />
-                {site.instagram.handle}
+                <span className="link-underline">{site.instagram.handle}</span>
               </a>
             </li>
             <li>
@@ -50,10 +50,10 @@ export default function Footer() {
                 href={site.whatsapp.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-cocoa hover:text-mocha hover:underline"
+                className="group inline-flex items-center gap-2 text-cocoa transition-colors hover:text-mocha"
               >
                 <FaWhatsapp aria-hidden />
-                WhatsApp
+                <span className="link-underline">WhatsApp</span>
               </a>
             </li>
           </ul>

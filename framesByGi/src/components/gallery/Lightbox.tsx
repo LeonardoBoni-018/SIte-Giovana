@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion, type PanInfo } from 'framer-motion';
+import { AnimatePresence, motion, type PanInfo, type Variants } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi';
+import { easeOutExpo } from '../../lib/motion';
 import type { Photo } from '../../lib/photos';
 import PhotoImage from './PhotoImage';
 
@@ -15,11 +16,27 @@ interface LightboxProps {
 
 const SWIPE_THRESHOLD = 60;
 
+/**
+ * Funções de `custom`: a foto que sai é um elemento antigo, então só lê a direção atual
+ * através do `custom` do AnimatePresence. Ao abrir (direção 0) a foto cresce levemente;
+ * ao navegar, desliza para o lado.
+ */
+const slide: Variants = {
+  enter: (direction: number) => ({ opacity: 0, x: direction * 48, scale: direction === 0 ? 0.94 : 1 }),
+  center: { opacity: 1, x: 0, scale: 1 },
+  exit: (direction: number) => ({ opacity: 0, x: direction * -48, transition: { duration: 0.18 } })
+};
+
 export default function Lightbox({ photos, title, index, onIndexChange, onClose }: LightboxProps) {
   const isOpen = index !== null;
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [direction, setDirection] = useState(0);
+
+  // Zera a direção ao fechar, para a próxima abertura usar a animação de entrada e não a de navegação.
+  useEffect(() => {
+    if (!isOpen) setDirection(0);
+  }, [isOpen]);
 
   const go = (step: number) => {
     if (index === null) return;
@@ -93,15 +110,17 @@ export default function Lightbox({ photos, title, index, onIndexChange, onClose 
           </div>
 
           <div className="relative flex min-h-0 flex-1 items-center justify-center px-4 pb-6 sm:px-20">
-            <AnimatePresence initial={false} custom={direction} mode="popLayout">
+            {/* Sem initial={false}: este AnimatePresence monta a cada abertura e a entrada deve tocar. */}
+            <AnimatePresence custom={direction} mode="popLayout">
               <motion.div
                 key={index}
                 custom={direction}
                 className="flex h-full w-full items-center justify-center"
-                initial={{ opacity: 0, x: direction * 48 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -48, transition: { duration: 0.18 } }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                variants={slide}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.35, ease: easeOutExpo }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.4}
