@@ -1,121 +1,133 @@
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiClock, FiLayers, FiPenTool, FiTrendingUp } from 'react-icons/fi';
-import SocialButton from '../components/SocialButton';
-import LogoBadge from '../components/LogoBadge';
+import { Link } from 'react-router-dom';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FiClock, FiLayers, FiTrendingUp } from 'react-icons/fi';
+import ContactCta from '../components/ContactCta';
+import HeroFrames from '../components/HeroFrames';
+import PhotoImage from '../components/gallery/PhotoImage';
 import SectionHeader from '../components/SectionHeader';
-import FeatureCard from '../components/FeatureCard';
+import ButtonLink from '../components/ui/ButtonLink';
+import { site } from '../config/site';
+import { photoCategories } from '../data/portfolio';
+import { usePageTitle } from '../hooks/usePageTitle';
+import { photo } from '../lib/photos';
 
-const stats = [
-  {
-    title: 'Atenção aos Detalhes',
-    description: 'Produção de fotos e vídeos personalizada, com foco nos detalhes e na demanda do cliente.',
-    icon: <FiLayers size={20} />
-  },
-  {
-    title: 'Atendimento Rápido',
-    description: 'Comunicação dedicada via WhatsApp para garantir agilidade e clareza em cada etapa do processo.',
-    icon: <FiClock size={20} />
-  },
-  {
-    title: 'Entrega Ágil',
-    description: 'Entrega rápida e eficiente, com foco em agilidade, organização e cumprimento consistente dos prazos definidos.',
-    icon: <FiTrendingUp size={20} />
-  }
-];
+const heroPhotos = {
+  main: photo('casamento2.png'),
+  left: photo('ensaioCrianca4.png'),
+  right: photo('ensaioFeminino1.png')
+};
 
-const steps = [
+const services = ['Fotografia mobile', 'Videomaker', 'Storymaker'];
+
+const qualities = [
   {
-    title: 'Briefing estratégico',
-    description: 'Entendo seu estilo, público e objetivo para criar narrativas verdadeiras.',
-    icon: <FiPenTool size={20} />
+    title: 'Atenção aos detalhes',
+    description: 'Produção de fotos e vídeos personalizada, com foco nos detalhes e no que você precisa.',
+    icon: FiLayers
   },
   {
-    title: 'Criação visual',
-    description: 'Design de stories personalizados com paleta, tipografia e ritmo visual únicos.',
-    icon: <FiLayers size={20} />
+    title: 'Atendimento rápido',
+    description: 'Comunicação direta pelo WhatsApp, com agilidade e clareza em cada etapa.',
+    icon: FiClock
   },
   {
-    title: 'Aprovação & entrega',
-    description: 'Feedbacks claros e entregas finais prontas para publicação imediata.',
-    icon: <FiClock size={20} />
+    title: 'Entrega ágil',
+    description: 'Organização e cumprimento dos prazos combinados, do primeiro clique à entrega final.',
+    icon: FiTrendingUp
   }
 ];
 
 export default function Home() {
+  usePageTitle();
+
   return (
-    <section className="space-y-12 sm:space-y-16 lg:space-y-20">
-      <div className="space-y-8 sm:space-y-10 text-center px-3 sm:px-0">
-        <div className="flex justify-center">
-          <LogoBadge size={100} className="sm:size-138 rounded-full border border-rosewood/20 bg-ivory p-3 sm:p-4" />
-        </div>
-        <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.4em] text-rosewood">
-          Frames by Gi
-        </span>
-        <div className="space-y-5 sm:space-y-6">
-          <h1 className="section-title mx-auto max-w-3xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight text-mocha">
+    <>
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-24 lg:pt-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          <h1 className="text-[2.35rem] font-medium leading-[1.1] tracking-[-0.01em] sm:text-5xl lg:text-[3.5rem]">
             Transformo momentos em memórias através de fotos e vídeos que contam histórias
           </h1>
-          <p className="mx-auto max-w-2xl text-sm sm:text-base leading-7 sm:leading-8 text-[#5c4232]">
-            Registros pensados para eternizar cada detalhe com sensibilidade, leveza e intenção
+          <p className="mt-6 max-w-[46ch] text-lg text-cocoa">
+            Registros pensados para eternizar cada detalhe com sensibilidade, leveza e intenção.
           </p>
-        </div>
 
-        
-
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          <div className="min-w-[110px] sm:min-w-[130px] rounded-full border border-white/80 bg-white/90 px-4 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-            Fotografia Mobile
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href={site.whatsapp.url} icon={<FaWhatsapp size={19} aria-hidden />}>
+              Pedir orçamento
+            </ButtonLink>
+            <ButtonLink href="/trabalhos" variant="secondary">
+              Ver trabalhos
+            </ButtonLink>
           </div>
-          <div className="min-w-[110px] sm:min-w-[130px] rounded-full border border-white/80 bg-white/90 px-4 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-            Videomaker
-          </div>
-          <div className="min-w-[110px] sm:min-w-[130px] rounded-full border border-white/80 bg-white/90 px-4 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm text-[#5c4232] shadow-[0_18px_40px_rgba(75,52,36,0.06)]">
-            Storymaker
-          </div>
-        </div>
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          <SocialButton label="Instagram" href="https://www.instagram.com/frames_by_gi/" />
-          <SocialButton label="WhatsApp" href="https://wa.me/5518996048185" />
-        </div>
-      </div>
 
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {stats.map((item) => (
-          <FeatureCard key={item.title} title={item.title} description={item.description} icon={item.icon} />
-        ))}
-      </div>
+          <ul className="mt-10 flex flex-wrap gap-y-2 text-sm text-cocoa" aria-label="Serviços">
+            {services.map((service, index) => (
+              <li key={service} className={index > 0 ? 'ml-4 border-l border-line pl-4' : ''}>
+                {service}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
 
-      {/* <section className="space-y-10">
-        <SectionHeader
-          title="Processo visual eficiente"
-          subtitle="Como trabalhamos"
-          description="Do briefing à entrega, cada passo é pensado para gerar resultados visuais consistentes e cair no gosto do público." 
-        />
+        <HeroFrames {...heroPhotos} />
+      </section>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {steps.map((step) => (
-            <FeatureCard key={step.title} title={step.title} description={step.description} icon={step.icon} />
+      <section aria-labelledby="diferenciais" className="border-y border-line bg-ivory">
+        <h2 id="diferenciais" className="sr-only">
+          Diferenciais
+        </h2>
+        <ul className="mx-auto grid max-w-6xl px-5 sm:px-8 md:grid-cols-3">
+          {qualities.map(({ title, description, icon: Icon }) => (
+            <li
+              key={title}
+              className="border-line py-8 [&:not(:first-child)]:border-t md:px-8 md:py-12 md:first:pl-0 md:last:pr-0 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-t-0"
+            >
+              <Icon className="text-rosewood" size={22} aria-hidden />
+              <h3 className="mt-4 text-xl font-medium">{title}</h3>
+              <p className="mt-2 text-[0.95rem] text-cocoa">{description}</p>
+            </li>
           ))}
-        </div>
-      </section> */}
+        </ul>
+      </section>
 
-      <div className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-6 sm:p-10 shadow-[0_18px_50px_rgba(75,52,36,0.08)]">
-        <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="space-y-3 sm:space-y-4">
-            <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-rosewood/80">Vamos eternizar o seu momento?</p>
-            <h2 className="section-title text-2xl sm:text-3xl font-semibold text-mocha">Solicite o seu orçamento</h2>
-          </div>
-          <a
-            href="https://wa.me/5518996048185"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-rosewood px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg shadow-rosewood/15 transition hover:bg-mocha"
-          >
-            Falar no WhatsApp
-            <FiArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </a>
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            title="Trabalhos"
+            description="Ensaios, casamentos e vídeos feitos com o celular. Escolha uma categoria para ver as fotos."
+          />
+          <Link to="/trabalhos" className="shrink-0 font-medium text-mocha underline decoration-rosewood/40 underline-offset-4 transition-colors hover:decoration-rosewood">
+            Ver todos os trabalhos
+          </Link>
         </div>
-      </div>
-    </section>
+
+        <ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+          {photoCategories.map((category) => (
+            <li key={category.id}>
+              <Link to={`/trabalhos#${category.id}`} className="group block">
+                <span className="block aspect-[3/4] overflow-hidden rounded-sm bg-ivory">
+                  <PhotoImage
+                    photo={category.photos[category.coverIndex]}
+                    alt=""
+                    sizes="(min-width: 1024px) 180px, (min-width: 640px) 30vw, 48vw"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                  />
+                </span>
+                <span className="mt-3 block font-serif text-lg leading-snug text-mocha decoration-rosewood/60 underline-offset-4 group-hover:underline">
+                  {category.title}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <ContactCta />
+    </>
   );
 }

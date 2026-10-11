@@ -1,131 +1,97 @@
+import ContactCta from '../components/ContactCta';
+import PhotoGrid from '../components/gallery/PhotoGrid';
 import SectionHeader from '../components/SectionHeader';
-import GalleryCarousel from '../components/GalleryCarousel';
-import StoryMakerVideo from '../components/StoryMakerVideo';
-import VideoMakerVideo from '../components/VideoMakerVideo';
-import preWedding1 from '../assets/preWedding1.png';
-import preWedding2 from '../assets/preWedding2.png';
-import preWedding3 from '../assets/preWedding3.png';
-import preWedding4 from '../assets/preWedding4.png';
-import ensaioFeminino1 from '../assets/ensaioFeminino1.png';
-import ensaioFeminino2 from '../assets/ensaioFeminino2.png';
-import ensaioFeminino3 from '../assets/ensaioFeminino3.png';
-import ensaioFeminino4 from '../assets/ensaioFeminino4.png';
-import ensaioCrianca1 from '../assets/ensaioCrianca1.png';
-import ensaioCrianca2 from '../assets/ensaioCrianca2.png';
-import ensaioCrianca3 from '../assets/ensaioCrianca3.jpeg';
-import ensaioCrianca4 from '../assets/ensaioCrianca4.png';
-import ensaioCrianca5 from '../assets/ensaioCrianca5.png';
-import ensaioCrianca6 from '../assets/ensaioCrianca6.png';
-import ensaioFamilia5 from '../assets/ensaioFamilia5.png';
-import ensaioFamilia6 from '../assets/ensaioFamilia6.png';
-import ensaioFamilia7 from '../assets/ensaioFamilia7.png';
-import casamento1 from '../assets/casamento1.png';
-import casamento2 from '../assets/casamento2.png';
-import casamento3 from '../assets/casamento3.png';
-import casamento4 from '../assets/casamento4.png';
-import ensaioPosicionamento1 from '../assets/ensaioPosicionamento1.png';
-import ensaioPosicionamento2 from '../assets/ensaioPosicionamento2.png';
-import ensaioPosicionamento3 from '../assets/ensaioPosicionamento3.png';
-import ensaioPosicionamento4 from '../assets/ensaioPosicionamento4.png';
-import storyMakerVideo from '../assets/storyMaker.mp4';
-import videoMakerVideo from '../assets/videoMaker.mp4';
+import VideoPlayer from '../components/VideoPlayer';
+import { photoCategories, videoWorks } from '../data/portfolio';
+import { useActiveSection } from '../hooks/useActiveSection';
+import { usePageTitle } from '../hooks/usePageTitle';
 
-const portfolioSections = [
-  {
-    title: 'Pré-Wedding',
-    description:
-      'Registros de casal com clima romântico e espontâneo, feitos para eternizar o amor antes do grande dia.',
-    images: [preWedding1, preWedding2, preWedding3, preWedding4]
-  },
-  {
-    title: 'Ensaio feminino',
-    description:
-      'Sessões voltadas para a expressão, confiança e estilo feminino, com um toque leve e natural.',
-    images: [ensaioFeminino1, ensaioFeminino2, ensaioFeminino3, ensaioFeminino4]
-  },
-  {
-    title: 'Ensaio infantil',
-    description:
-      'Ensaio infantil com clima lúdico e afetivo, registrando brincadeiras e momentos espontâneos de cuidado.',
-    images: [ensaioCrianca1, ensaioCrianca2, ensaioCrianca3, ensaioCrianca4, ensaioCrianca5, ensaioCrianca6]
-  },
-  {
-    title: 'Ensaio de família',
-    description:
-      'Fotos que capturam a conexão entre gerações, com carinho e composição visual suave para o seu acervo.',
-    images: [ensaioFamilia5, ensaioFamilia6, ensaioFamilia7]
-  },
-  {
-    title: 'Casamento',
-    description:
-      'Cobertura de cerimônias e celebrações com estética sofisticada, batonando emoção e detalhes memoráveis.',
-    images: [casamento1, casamento2, casamento3, casamento4]
-  },
-  {
-    title: 'Ensaio de posicionamento',
-    description:
-      'Imagens autorais para fortalecer sua presença digital, reforçando sua marca com estilo e personalidade.',
-    images: [ensaioPosicionamento1, ensaioPosicionamento2, ensaioPosicionamento3, ensaioPosicionamento4]
-  }
+const VIDEOS_ID = 'videos';
+
+const sections = [
+  ...photoCategories.map(({ id, title }) => ({ id, title })),
+  { id: VIDEOS_ID, title: 'Vídeos' }
 ];
+const sectionIds = sections.map(({ id }) => id);
 
 export default function Portfolio() {
+  usePageTitle('Trabalhos');
+  const activeId = useActiveSection(sectionIds);
+
   return (
-    <section className="space-y-10 sm:space-y-14 lg:space-y-16">
-      <SectionHeader
-        title="Trabalhos"
-        subtitle="Portfólio"
-        // description="Carrosséis de fotos por tipo de trabalho, com visual elegante e apresentações interativas." 
-      />
-
-      <div className="grid gap-8 sm:gap-10 lg:grid-cols-2">
-        {portfolioSections.map((section) => (
-          <article key={section.title} className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-5 sm:p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-            <div className="mb-5 sm:mb-8 text-center">
-              <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
-                {section.title}
-              </span>
-              {/* <h2 className="section-title mx-auto mt-4 max-w-[16rem] text-3xl font-semibold text-mocha">{section.title}</h2> */}
-              <p className="mt-3 sm:mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">{section.description}</p>
-            </div>
-
-            <GalleryCarousel images={section.images} alt={section.title} />
-          </article>
-        ))}
-
-        <article className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-5 sm:p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-          <div className="mb-5 sm:mb-8 text-center">
-            <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
-              StoryMaker
-            </span>
-            {/* <h2 className="section-title mx-auto mt-4 max-w-[16rem] text-3xl font-semibold text-mocha">
-              StoryMaker
-            </h2> */}
-            <p className="mt-3 sm:mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-              Vídeo autoral StoryMaker com narrativa visual pensando para engajar e apresentar o estilo criativo do trabalho.
-            </p>
-          </div>
-
-          <StoryMakerVideo src={storyMakerVideo} />
-        </article>
-
-        <article className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-5 sm:p-8 shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-          <div className="mb-5 sm:mb-8 text-center">
-            <span className="inline-flex rounded-full bg-rosewood/10 px-3 sm:px-4 py-1.5 sm:py-2 text-xs uppercase tracking-[0.35em] text-rosewood">
-              VideoMaker
-            </span>
-            <p className="mt-3 sm:mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-              Vídeo VideoMaker com cortes dinâmicos e acabamento profissional para divulgar serviços em redes sociais.
-            </p>
-          </div>
-
-          <VideoMakerVideo src={videoMakerVideo} />
-        </article>
+    <>
+      <div className="mx-auto max-w-6xl px-5 pt-10 sm:px-8 sm:pt-14 lg:pt-20">
+        <SectionHeader
+          as="h1"
+          title="Trabalhos"
+          description="Ensaios, casamentos e vídeos feitos com o celular. Toque em uma foto para ampliar."
+        />
       </div>
 
-      {/* <div className="rounded-[40px] border border-white/80 bg-white/90 p-10 text-center text-sm leading-7 text-[#5c4232] shadow-[0_20px_60px_rgba(75,52,36,0.08)]">
-        Cada carrossel apresenta as fotos em ordem aleatória, para garantir uma experiência visual dinâmica e destacar a variedade de cada estilo de trabalho.
-      </div> */}
-    </section>
+      <nav
+        aria-label="Categorias"
+        className="sticky top-16 z-30 mt-8 border-b border-line bg-sand/95 backdrop-blur-sm sm:top-[4.5rem]"
+      >
+        <ul className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] sm:px-8">
+          {sections.map(({ id, title }) => {
+            const isActive = id === activeId;
+            return (
+              <li key={id} className="shrink-0">
+                <a
+                  href={`#${id}`}
+                  aria-current={isActive ? 'location' : undefined}
+                  className={`block rounded-full border px-4 py-1.5 text-sm transition-colors duration-200 ${
+                    isActive
+                      ? 'border-rosewood bg-rosewood text-ivory'
+                      : 'border-line text-cocoa hover:border-rosewood hover:text-mocha'
+                  }`}
+                >
+                  {title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        {photoCategories.map((category) => (
+          <section
+            key={category.id}
+            id={category.id}
+            aria-labelledby={`${category.id}-titulo`}
+            className="grid gap-6 border-b border-line py-12 last:border-b-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-14 lg:py-16"
+          >
+            <header className="lg:sticky lg:top-40 lg:self-start">
+              <h2 id={`${category.id}-titulo`} className="text-2xl font-medium sm:text-3xl">
+                {category.title}
+              </h2>
+              <p className="mt-3 max-w-[48ch] text-cocoa">{category.description}</p>
+              <p className="mt-4 text-sm text-cocoa">{category.photos.length} fotos</p>
+            </header>
+            <PhotoGrid photos={category.photos} title={category.title} />
+          </section>
+        ))}
+      </div>
+
+      <section id={VIDEOS_ID} aria-labelledby="videos-titulo" className="border-t border-line bg-ivory">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 lg:py-16">
+          <h2 id="videos-titulo" className="text-2xl font-medium sm:text-3xl">
+            Vídeos
+          </h2>
+          <div className="mt-10 grid gap-14 sm:grid-cols-2 sm:gap-10">
+            {videoWorks.map((video) => (
+              <article key={video.id} className="text-center">
+                <VideoPlayer src={video.src} label={`Vídeo de exemplo: ${video.title}`} />
+                <h3 className="mt-6 text-xl font-medium">{video.title}</h3>
+                <p className="mx-auto mt-2 max-w-[40ch] text-cocoa">{video.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ContactCta />
+    </>
   );
 }

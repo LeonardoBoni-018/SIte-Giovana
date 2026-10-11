@@ -1,101 +1,106 @@
-import { FiCamera, FiHeart, FiStar } from 'react-icons/fi';
-import FeatureCard from '../components/FeatureCard';
+import { FiCheck } from 'react-icons/fi';
+import ContactCta from '../components/ContactCta';
+import PhotoImage from '../components/gallery/PhotoImage';
 import SectionHeader from '../components/SectionHeader';
-import aboutMe1 from '../assets/aboutMe1.png';
-import aboutMe2 from '../assets/aboutMe2.png';
+import { usePageTitle } from '../hooks/usePageTitle';
+import { photo } from '../lib/photos';
 
-// const highlights = [
-//   {
-//     title: 'Olhar para os detalhes',
-//     description: 'Cada foto e vídeo é pensado para registrar não só o momento, mas também a emoção que existe em cada detalhe.',
-//     icon: <FiHeart size={20} />
-//   },
-//   {
-//     title: 'Histórias com alma',
-//     description: 'Conteúdos que comunicam emoção e criam conexões reais com quem acompanha seu perfil.',
-//     icon: <FiStar size={20} />
-//   },
-//   {
-//     title: 'Experiência visual',
-//     description: 'Estética suave, tipografia refinada e harmonização de cores para um resultado premium.',
-//     icon: <FiCamera size={20} />
-//   }
-// ];
+const portrait = photo('aboutMe1.png');
+const portraitDetail = photo('aboutMe2.png');
+
+const steps = [
+  'Contato inicial e escolha do serviço que melhor atende às suas necessidades.',
+  'Alinhamento das expectativas.',
+  'Captação dos elementos visuais.',
+  'Edição minuciosa.',
+  'Feedbacks e ajustes finais.',
+  'Entrega dos arquivos finalizados em alta resolução.'
+];
+
+const reasons = [
+  'Olhar sensível para os detalhes.',
+  'Compromisso com a qualidade e a originalidade.',
+  'Atendimento personalizado e proximidade com o cliente.',
+  'Entregas rápidas e um acabamento visual que eleva sua presença digital com suavidade e estilo.'
+];
 
 export default function About() {
+  usePageTitle('Sobre');
+
   return (
-    <section className="space-y-10 sm:space-y-14 lg:space-y-16">
-      <SectionHeader
-        title="Sobre o Frames by Gi"
-        subtitle="Minha história"
-        description=""
-      />
-
-      <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-        <div className="space-y-5 sm:space-y-6 rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-6 sm:p-10 card-shadow">
-          <p className="text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-            O Frames by Gi nasceu do meu olhar para aquilo que muitas vezes passa despercebido: os detalhes, os sentimentos e a essência de cada momento.
-          </p>
-          <p className="text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-            O que começou como uma paixão por registrar memórias se transformou em um trabalho feito com propósito — criando fotos e vídeos que permitem reviver histórias de forma leve, natural e verdadeira.
-          </p>
-          <p className="text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-            Hoje, cada registro carrega um pouco da minha dedicação, do meu cuidado e da minha forma de enxergar a beleza nos momentos reais.
-          </p>
+    <>
+      <section className="mx-auto grid max-w-6xl gap-14 px-5 pb-16 pt-10 sm:px-8 sm:pt-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20 lg:pb-24 lg:pt-20">
+        <div className="relative mx-auto w-full max-w-[420px] pb-16 pr-12 sm:pr-20">
+          <figure className="print-frame">
+            <PhotoImage
+              photo={portrait}
+              alt="Retrato segurando um celular e uma luz de LED, os equipamentos de trabalho"
+              sizes="(min-width: 1024px) 360px, 80vw"
+              loading="eager"
+              className="aspect-[3/4] w-full object-cover"
+            />
+          </figure>
+          <figure className="print-frame absolute bottom-0 right-0 w-[46%]">
+            <PhotoImage
+              photo={portraitDetail}
+              alt="Retrato com o celular e a luz de LED erguidos"
+              sizes="(min-width: 1024px) 190px, 40vw"
+              className="aspect-[3/4] w-full object-cover"
+            />
+          </figure>
         </div>
 
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2">
-          <div className="relative group overflow-hidden rounded-[24px] sm:rounded-[36px] border border-white/80 bg-white/90 shadow-[0_22px_50px_rgba(75,52,36,0.08)] transition hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,52,36,0.14)]">
-            <img
-              src={aboutMe1}
-              alt="Sobre o Frames by Gi"
-              className="h-64 sm:h-full w-full object-cover transition duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#5c4232]/90 to-transparent px-4 sm:px-5 py-3 sm:py-4 text-white">
-              <p className="text-xs uppercase tracking-[0.4em]">Estilo pessoal</p>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-[24px] sm:rounded-[36px] border border-white/80 bg-white/90 shadow-[0_22px_50px_rgba(75,52,36,0.08)] transition hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(75,52,36,0.14)]">
-            <img
-              src={aboutMe2}
-              alt="Fotografia autoral"
-              className="h-64 sm:h-full w-full object-cover transition duration-500 hover:scale-105"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#5c4232]/90 to-transparent px-4 sm:px-5 py-3 sm:py-4 text-white">
-              <p className="text-xs uppercase tracking-[0.4em]">Narrativa visual</p>
-            </div>
+        <div>
+          <h1 className="text-4xl font-medium leading-tight sm:text-5xl">Sobre o Frames by Gi</h1>
+          <div className="mt-8 max-w-[60ch] space-y-5 text-cocoa">
+            <p className="font-serif text-xl leading-relaxed text-mocha sm:text-[1.35rem]">
+              O Frames by Gi nasceu do meu olhar para aquilo que muitas vezes passa despercebido: os detalhes, os
+              sentimentos e a essência de cada momento.
+            </p>
+            <p>
+              O que começou como uma paixão por registrar memórias se transformou em um trabalho feito com propósito,
+              criando fotos e vídeos que permitem reviver histórias de forma leve, natural e verdadeira.
+            </p>
+            <p>
+              Hoje, cada registro carrega um pouco da minha dedicação, do meu cuidado e da minha forma de enxergar a
+              beleza nos momentos reais.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-6 sm:p-10 card-shadow">
-          <h3 className="section-title text-2xl sm:text-3xl font-semibold text-mocha">Como eu trabalho</h3>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-            Do briefing à entrega, cada etapa é pensada e estruturada para garantir um resultado que vá além do visual:
-          </p>
-          <ul className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232]">
-            <li>• Contato inicial com o cliente e escolha do serviço que melhor atenda às suas necessidades;</li>
-            <li>• Alinhamento das expectativas;</li>
-            <li>• Captação dos elementos visuais;</li>
-            <li>• Edição minuciosa;</li>
-            <li>• Feedbacks e ajustes finais;</li>
-            <li>• Entrega dos arquivos finalizados em alta resolução.</li>
-            
-          </ul>
+      <section className="border-y border-line bg-ivory">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+          <SectionHeader
+            title="Como eu trabalho"
+            description="Do briefing à entrega, cada etapa é pensada para garantir um resultado que vá além do visual."
+          />
+          <ol className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            {steps.map((step, index) => (
+              <li key={step} className="flex gap-5 border-t border-line pt-5">
+                <span className="font-serif text-3xl leading-none text-rosewood" aria-hidden>
+                  {index + 1}
+                </span>
+                <p className="text-mocha">{step}</p>
+              </li>
+            ))}
+          </ol>
         </div>
+      </section>
 
-        <div className="rounded-[24px] sm:rounded-[40px] border border-white/80 bg-white/90 p-6 sm:p-10 card-shadow">
-          <h3 className="section-title text-2xl sm:text-3xl font-semibold text-mocha">Por que escolher o Frames by Gi?</h3>
-          <ul className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-xs sm:text-sm leading-6 sm:leading-7 text-[#5c4232] list-disc list-inside">
-            <li>Olhar sensível para os detalhes;</li>
-            <li>Compromisso com a qualidade e a originalidade;</li>
-            <li>Atendimento personalizado e proximidade com o cliente;</li>
-            <li>Entregas rápidas e um acabamento visual que eleva sua presença digital com suavidade e estilo.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_1.2fr] lg:gap-20 lg:py-24">
+        <SectionHeader title="Por que escolher o Frames by Gi?" />
+        <ul className="space-y-5">
+          {reasons.map((reason) => (
+            <li key={reason} className="flex gap-4 text-lg text-mocha">
+              <FiCheck className="mt-1.5 shrink-0 text-rosewood" size={20} aria-hidden />
+              {reason}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <ContactCta />
+    </>
   );
 }

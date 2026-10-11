@@ -1,18 +1,13 @@
-import logoUrl from '../assets/logo.png';
+import logoUrl from '../assets/brand/logo.png';
 
 interface LogoBadgeProps {
-  size?: number;
   className?: string;
-  alt?: string;
 }
 
-export default function LogoBadge({ size = 56, className = '', alt = 'Frames by Gi logo' }: LogoBadgeProps) {
+export default function LogoBadge({ className = 'h-12 w-12' }: LogoBadgeProps) {
   return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-3xl border border-rosewood/10 bg-ivory p-2 ${className}`}
-      style={{ width: size, height: size }}
-    >
-      <img src={logoUrl} alt={alt} className="h-full w-full object-contain" />
-    </div>
+    <span className={`inline-flex shrink-0 overflow-hidden rounded-full border border-line bg-ivory ${className}`}>
+      <img src={logoUrl} alt="" width={500} height={500} className="h-full w-full scale-125 object-contain" />
+    </span>
   );
 }
