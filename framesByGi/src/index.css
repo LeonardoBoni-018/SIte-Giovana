@@ -51,9 +51,13 @@
 }
 
 @layer components {
-  /* Moldura de "impressão fotográfica": a borda ivory remete ao nome da marca. */
+  /* Foto sem moldura, com cantos arredondados (suaves como os botões em pílula do site)
+     e a sombra de "impressão" para destacar do fundo.
+     Para voltar a moldura, use por exemplo: bg-rosewood p-1.5 sm:p-2 */
   .print-frame {
-    @apply bg-ivory p-1.5 shadow-print sm:p-2;
+    @apply overflow-hidden rounded-xl shadow-print;
+    /* Garante o recorte arredondado também durante as animações de escala no Safari. */
+    isolation: isolate;
   }
 
   /* Sublinhado que cresce da esquerda para a direita no hover/foco. */

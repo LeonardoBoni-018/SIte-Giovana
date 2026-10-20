@@ -53,10 +53,10 @@ export default function About() {
               <motion.div variants={developPhoto}>
                 <PhotoImage
                   photo={portrait}
-                  alt="Retrato segurando um celular e uma luz de LED, os equipamentos de trabalho"
+                  alt="Giovana mostrando na tela do celular uma foto que acabou de tirar"
                   sizes="(min-width: 1024px) 360px, 80vw"
                   loading="eager"
-                  className="aspect-[3/4] w-full object-cover"
+                  className="aspect-[3/4] w-full object-cover object-[50%_80%]"
                 />
               </motion.div>
             </div>
@@ -67,9 +67,9 @@ export default function About() {
                 <motion.div variants={developPhoto}>
                   <PhotoImage
                     photo={portraitDetail}
-                    alt="Retrato com o celular e a luz de LED erguidos"
+                    alt="Giovana sorrindo com o celular, sua ferramenta de trabalho, na mão"
                     sizes="(min-width: 1024px) 190px, 40vw"
-                    className="aspect-[3/4] w-full object-cover"
+                    className="aspect-[3/4] w-full object-cover object-[50%_80%]"
                   />
                 </motion.div>
               </div>

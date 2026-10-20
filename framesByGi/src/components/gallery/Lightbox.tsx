@@ -132,7 +132,7 @@ export default function Lightbox({ photos, title, index, onIndexChange, onClose 
                   sizes="(min-width: 768px) 70vh, 100vw"
                   loading="eager"
                   draggable={false}
-                  className="h-auto max-h-full w-auto max-w-full select-none rounded-sm object-contain shadow-print"
+                  className="h-auto max-h-full w-auto max-w-full select-none rounded-xl object-contain shadow-print"
                 />
               </motion.div>
             </AnimatePresence>

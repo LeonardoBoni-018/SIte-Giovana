@@ -148,7 +148,8 @@ export default function Home() {
           {photoCategories.map((category) => (
             <motion.li key={category.id} variants={fadeUp}>
               <Link to={`/trabalhos#${category.id}`} className="group block">
-                <span className="relative block aspect-[3/4] overflow-hidden rounded-sm bg-ivory">
+                <span className="print-frame block">
+                <span className="relative block aspect-[3/4] overflow-hidden bg-sand">
                   <motion.span className="block h-full w-full" variants={developPhoto}>
                     <PhotoImage
                       photo={category.photos[category.coverIndex]}
@@ -167,6 +168,7 @@ export default function Home() {
                       <FiArrowRight aria-hidden />
                     </span>
                   </span>
+                </span>
                 </span>
                 <span className="mt-3 block font-serif text-lg leading-snug text-mocha">
                   <span className="link-underline">{category.title}</span>

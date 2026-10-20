@@ -55,7 +55,7 @@ export const photoCategories: PhotoCategory[] = [
     title: 'Ensaio gestante',
     description:
       'A espera registrada com delicadeza, em meio à natureza e com a família que está crescendo junto.',
-    photos: numbered('ensaioGestante', 1, 4).map(photo)
+    photos: numbered('ensaioGestante', 1, 10).map(photo)
   },
   {
     id: 'ensaio-feminino',
