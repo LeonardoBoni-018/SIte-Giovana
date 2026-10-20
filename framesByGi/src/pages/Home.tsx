@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiArrowRight, FiClock, FiLayers, FiTrendingUp } from 'react-icons/fi';
 import ContactCta from '../components/ContactCta';
-import HeroFrames from '../components/HeroFrames';
+import HeroFrames, { type HeroPhoto } from '../components/HeroFrames';
 import PhotoImage from '../components/gallery/PhotoImage';
 import Marquee from '../components/motion/Marquee';
 import Reveal from '../components/motion/Reveal';
@@ -14,13 +15,24 @@ import { site } from '../config/site';
 import { photoCategories } from '../data/portfolio';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { developPhoto, fadeUp, stagger, viewportOnce } from '../lib/motion';
-import { photo } from '../lib/photos';
+import { pickRandom, shuffle } from '../lib/random';
 
-const heroPhotos = {
-  main: photo('casamento2.png'),
-  left: photo('ensaioCrianca4.png'),
-  right: photo('ensaioFeminino1.png')
-};
+/**
+ * Sorteia as três fotos do topo a cada visita: três categorias diferentes e uma foto
+ * qualquer de cada. Só entram fotos em pé, que preenchem a moldura 3:4 sem cortes fortes.
+ */
+function drawHeroPhotos(): { main: HeroPhoto; left: HeroPhoto; right: HeroPhoto } {
+  const [main, left, right] = shuffle(photoCategories)
+    .slice(0, 3)
+    .map((category): HeroPhoto => {
+      const portraits = category.photos.filter(({ width, height }) => height > width);
+      return {
+        photo: pickRandom(portraits.length ? portraits : category.photos),
+        alt: `Foto de ${category.title.toLowerCase()}`
+      };
+    });
+  return { main, left, right };
+}
 
 const services = ['Fotografia mobile', 'Videomaker', 'Storymaker'];
 
@@ -46,6 +58,7 @@ const qualities = [
 
 export default function Home() {
   usePageTitle();
+  const [heroPhotos] = useState(drawHeroPhotos);
 
   return (
     <>
@@ -117,7 +130,7 @@ export default function Home() {
         <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader
             title="Trabalhos"
-            description="Ensaios, casamentos e vídeos feitos com o celular. Escolha uma categoria para ver as fotos."
+            description="Ensaios, casamentos, eventos e vídeos feitos com o celular. Escolha uma categoria para ver as fotos."
           />
           <Link to="/trabalhos" className="group inline-flex shrink-0 items-center gap-2 font-medium text-mocha">
             <span className="link-underline-rest">Ver todos os trabalhos</span>
@@ -126,7 +139,7 @@ export default function Home() {
         </Reveal>
 
         <motion.ul
-          className="mt-10 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-6"
+          className="mt-10 grid grid-cols-2 gap-x-3 gap-y-6 md:grid-cols-5"
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
@@ -140,7 +153,7 @@ export default function Home() {
                     <PhotoImage
                       photo={category.photos[category.coverIndex]}
                       alt=""
-                      sizes="(min-width: 1024px) 180px, (min-width: 640px) 30vw, 48vw"
+                      sizes="(min-width: 1152px) 210px, (min-width: 768px) 19vw, 48vw"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]"
                     />
                   </motion.span>

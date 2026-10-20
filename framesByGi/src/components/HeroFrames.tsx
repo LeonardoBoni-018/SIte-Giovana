@@ -4,10 +4,15 @@ import type { Photo } from '../lib/photos';
 import { easeOutExpo } from '../lib/motion';
 import PhotoImage from './gallery/PhotoImage';
 
+export interface HeroPhoto {
+  photo: Photo;
+  alt: string;
+}
+
 interface HeroFramesProps {
-  main: Photo;
-  left: Photo;
-  right: Photo;
+  main: HeroPhoto;
+  left: HeroPhoto;
+  right: HeroPhoto;
 }
 
 /**
@@ -26,9 +31,9 @@ export default function HeroFrames({ main, left, right }: HeroFramesProps) {
   const rightY = useTransform(scrollYProgress, [0, 1], [0, -150 * depth]);
 
   const frames = [
-    { photo: left, alt: 'Ensaio infantil ao ar livre', className: 'left-0 top-[14%] w-[44%]', y: leftY, tilt: -2.5, delay: 0.35 },
-    { photo: right, alt: 'Ensaio feminino com luz natural', className: 'right-0 top-[36%] w-[42%]', y: rightY, tilt: 2.5, delay: 0.5 },
-    { photo: main, alt: 'Casal em ensaio sob um arco de folhagens', className: 'left-[22%] top-0 z-10 w-[56%]', y: mainY, tilt: 0, delay: 0.15 }
+    { ...left, className: 'left-0 top-[14%] w-[44%]', y: leftY, tilt: -2.5, delay: 0.35 },
+    { ...right, className: 'right-0 top-[36%] w-[42%]', y: rightY, tilt: 2.5, delay: 0.5 },
+    { ...main, className: 'left-[22%] top-0 z-10 w-[56%]', y: mainY, tilt: 0, delay: 0.15 }
   ];
 
   return (

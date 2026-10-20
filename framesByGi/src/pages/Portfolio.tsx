@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ContactCta from '../components/ContactCta';
-import PhotoGrid from '../components/gallery/PhotoGrid';
+import PhotoCarousel from '../components/gallery/PhotoCarousel';
 import Reveal from '../components/motion/Reveal';
 import SectionHeader from '../components/SectionHeader';
 import VideoPlayer from '../components/VideoPlayer';
@@ -39,7 +39,7 @@ export default function Portfolio() {
         <SectionHeader
           as="h1"
           title="Trabalhos"
-          description="Ensaios, casamentos e vídeos feitos com o celular. Toque em uma foto para ampliar."
+          description="Ensaios, casamentos, eventos e vídeos feitos com o celular. A cada visita as fotos aparecem numa ordem diferente; toque em uma para ampliar."
         />
       </Reveal>
 
@@ -84,18 +84,23 @@ export default function Portfolio() {
             key={category.id}
             id={category.id}
             aria-labelledby={`${category.id}-titulo`}
-            className="grid gap-6 border-b border-line py-12 last:border-b-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-14 lg:py-16"
+            className="border-b border-line pb-6 pt-12 last:border-b-0 lg:pb-8 lg:pt-16"
           >
-            <header className="lg:sticky lg:top-40 lg:self-start">
-              <Reveal>
-                <h2 id={`${category.id}-titulo`} className="text-2xl font-medium sm:text-3xl">
-                  {category.title}
-                </h2>
-                <p className="mt-3 max-w-[48ch] text-cocoa">{category.description}</p>
-                <p className="mt-4 text-sm text-cocoa">{category.photos.length} fotos</p>
-              </Reveal>
-            </header>
-            <PhotoGrid photos={category.photos} title={category.title} />
+            <PhotoCarousel
+              photos={category.photos}
+              title={category.title}
+              header={
+                <Reveal>
+                  <h2 id={`${category.id}-titulo`} className="text-2xl font-medium sm:text-3xl">
+                    {category.title}
+                  </h2>
+                  <p className="mt-3 max-w-[56ch] text-cocoa">
+                    {category.description}
+                    <span className="ml-2 whitespace-nowrap text-sm text-rosewood">{category.photos.length} fotos</span>
+                  </p>
+                </Reveal>
+              }
+            />
           </section>
         ))}
       </div>
@@ -108,7 +113,7 @@ export default function Portfolio() {
             </h2>
           </Reveal>
           <motion.div
-            className="mt-10 grid gap-14 sm:grid-cols-2 sm:gap-10"
+            className="mt-10 grid gap-14 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 sm:max-lg:[&>*:last-child:nth-child(odd)]:col-span-2"
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}

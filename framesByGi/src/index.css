@@ -101,6 +101,22 @@
   .marquee-track {
     animation: marquee 40s linear infinite;
   }
+
+  /* Segmento da barra de stories enchendo da esquerda para a direita. */
+  .story-fill {
+    animation-name: story-fill;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes story-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes marquee {

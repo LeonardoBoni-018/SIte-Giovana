@@ -1,6 +1,12 @@
 import { photo, type Photo } from '../lib/photos';
 import storyMakerVideo from '../assets/videos/storyMaker.mp4';
 import videoMakerVideo from '../assets/videos/videoMaker.mp4';
+import sameDayVideo from '../assets/videos/sameDay.mp4';
+
+/** Gera a lista `prefixo1.ext`, `prefixo2.ext`… para fotos numeradas em sequência. */
+function numbered(prefix: string, from: number, to: number, ext = 'jpeg'): string[] {
+  return Array.from({ length: to - from + 1 }, (_, i) => `${prefix}${from + i}.${ext}`);
+}
 
 export interface PhotoCategory {
   id: string;
@@ -25,7 +31,31 @@ export const photoCategories: PhotoCategory[] = [
     title: 'Pré-wedding',
     description:
       'Registros de casal com clima romântico e espontâneo, feitos para eternizar o amor antes do grande dia.',
-    photos: ['preWedding1.png', 'preWedding2.png', 'preWedding3.png', 'preWedding4.png'].map(photo)
+    photos: ['preWedding1.png', 'preWedding2.png', 'preWedding3.png', 'preWedding4.png', ...numbered('preWedding', 5, 10)].map(photo)
+  },
+  {
+    id: 'making-of-noiva',
+    coverIndex: 2,
+    title: 'Making of da noiva',
+    description:
+      'Os detalhes e a emoção da preparação: o vestido, os acessórios e os abraços antes de entrar na cerimônia.',
+    photos: numbered('makingOfNoiva', 1, 5).map(photo)
+  },
+  {
+    id: 'casamento',
+    coverIndex: 0,
+    title: 'Casamento',
+    description:
+      'Cobertura de cerimônias e celebrações com estética sofisticada, equilibrando emoção e detalhes memoráveis.',
+    photos: [...numbered('casamento', 1, 4, 'png'), ...numbered('casamento', 5, 10)].map(photo)
+  },
+  {
+    id: 'ensaio-gestante',
+    coverIndex: 3,
+    title: 'Ensaio gestante',
+    description:
+      'A espera registrada com delicadeza, em meio à natureza e com a família que está crescendo junto.',
+    photos: numbered('ensaioGestante', 1, 4).map(photo)
   },
   {
     id: 'ensaio-feminino',
@@ -51,6 +81,14 @@ export const photoCategories: PhotoCategory[] = [
     ].map(photo)
   },
   {
+    id: 'aniversario-infantil',
+    coverIndex: 3,
+    title: 'Aniversário infantil',
+    description:
+      'A festa contada pelos olhos das crianças: a decoração, os amigos, a família e cada sorriso na hora do parabéns.',
+    photos: numbered('aniversarioInfantil', 1, 9).map(photo)
+  },
+  {
     id: 'ensaio-familia',
     coverIndex: 1,
     title: 'Ensaio de família',
@@ -59,25 +97,20 @@ export const photoCategories: PhotoCategory[] = [
     photos: ['ensaioFamilia5.png', 'ensaioFamilia6.png', 'ensaioFamilia7.png'].map(photo)
   },
   {
-    id: 'casamento',
-    coverIndex: 0,
-    title: 'Casamento',
-    description:
-      'Cobertura de cerimônias e celebrações com estética sofisticada, equilibrando emoção e detalhes memoráveis.',
-    photos: ['casamento1.png', 'casamento2.png', 'casamento3.png', 'casamento4.png'].map(photo)
-  },
-  {
     id: 'ensaio-posicionamento',
     coverIndex: 2,
     title: 'Ensaio de posicionamento',
     description:
       'Imagens autorais para fortalecer sua presença digital, reforçando sua marca com estilo e personalidade.',
-    photos: [
-      'ensaioPosicionamento1.png',
-      'ensaioPosicionamento2.png',
-      'ensaioPosicionamento3.png',
-      'ensaioPosicionamento4.png'
-    ].map(photo)
+    photos: [...numbered('ensaioPosicionamento', 1, 4, 'png'), ...numbered('ensaioPosicionamento', 5, 8)].map(photo)
+  },
+  {
+    id: 'palestras',
+    coverIndex: 2,
+    title: 'Palestras',
+    description:
+      'Cobertura de palestras e eventos corporativos, com registros de quem fala e da presença no palco.',
+    photos: numbered('palestra', 1, 5).map(photo)
   }
 ];
 
@@ -95,5 +128,12 @@ export const videoWorks: VideoWork[] = [
     description:
       'Vídeos com cortes dinâmicos e acabamento profissional para divulgar serviços nas redes sociais.',
     src: videoMakerVideo
+  },
+  {
+    id: 'same-day',
+    title: 'Same day',
+    description:
+      'O vídeo da cerimônia editado e entregue no mesmo dia, para os noivos reviverem e compartilharem ainda durante a festa.',
+    src: sameDayVideo
   }
 ];
