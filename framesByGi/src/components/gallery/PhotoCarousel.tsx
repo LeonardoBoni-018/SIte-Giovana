@@ -102,19 +102,17 @@ export default function PhotoCarousel({ photos, title, header }: PhotoCarouselPr
       <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-10">
         <div className="min-w-0">{header}</div>
         <div className="flex shrink-0 items-center gap-2">
-          <ControlButton label="Fotos anteriores" onClick={() => goTo(page - 1)}>
-            <FiChevronLeft size={20} aria-hidden />
-          </ControlButton>
-          <ControlButton label="Próximas fotos" onClick={() => goTo(page + 1)}>
-            <FiChevronRight size={20} aria-hidden />
-          </ControlButton>
           <button
             type="button"
             onClick={reshuffle}
             aria-label={`Embaralhar as fotos de ${title}`}
-            className="group ml-1 inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-sm text-mocha transition-colors duration-300 hover:border-rosewood hover:bg-rosewood hover:text-ivory"
+            className="group inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-sm text-mocha transition-colors duration-300 hover:border-rosewood hover:bg-rosewood hover:text-ivory"
           >
-            <FiShuffle size={16} aria-hidden className="transition-transform duration-500 ease-out-expo group-hover:rotate-180" />
+            <FiShuffle
+              size={16}
+              aria-hidden
+              className="transition-transform duration-500 ease-out-expo group-hover:rotate-180"
+            />
             Embaralhar
           </button>
         </div>
@@ -140,7 +138,10 @@ export default function PhotoCarousel({ photos, title, header }: PhotoCarouselPr
                       <span
                         key={`${round}-${page}`}
                         className="story-fill absolute inset-0 origin-left bg-rosewood"
-                        style={{ animationDuration: `${STORY_MS}ms`, animationPlayState: paused ? 'paused' : 'running' }}
+                        style={{
+                          animationDuration: `${STORY_MS}ms`,
+                          animationPlayState: paused ? 'paused' : 'running'
+                        }}
                         onAnimationEnd={() => goTo(page + 1)}
                       />
                     )}
@@ -162,45 +163,52 @@ export default function PhotoCarousel({ photos, title, header }: PhotoCarouselPr
         )}
       </div>
 
-      <motion.ul
-        key={round}
-        ref={trackRef}
-        onScroll={updatePosition}
-        onPointerEnter={(event) => event.pointerType === 'mouse' && setHovering(true)}
-        onPointerLeave={() => setHovering(false)}
-        onFocus={() => setHovering(true)}
-        onBlur={() => setHovering(false)}
-        className="-mx-3 mt-3 grid snap-x snap-mandatory auto-cols-[calc((100%_-_0.75rem)/2)] grid-flow-col gap-3 overflow-x-auto scroll-px-3 px-3 pb-8 pt-2 [scrollbar-width:none] sm:auto-cols-[calc((100%_-_2rem)/3)] sm:gap-4 lg:auto-cols-[calc((100%_-_3.75rem)/4)] lg:gap-5 [&::-webkit-scrollbar]:hidden"
-        initial="hidden"
-        {...(round === 0 ? { whileInView: 'visible', viewport: { once: true, amount: 0.15 } } : { animate: 'visible' })}
-        variants={stagger(0.08)}
-      >
-        {order.map((photo, index) => (
-          <motion.li key={photo.src} variants={frameVariants} className="snap-start">
-            <button
-              type="button"
-              onClick={() => setOpenIndex(index)}
-              aria-label={`Ampliar ${title}, foto ${index + 1} de ${order.length}`}
-              className="print-frame group block w-full cursor-zoom-in transition-[transform,box-shadow] duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-[0_2px_4px_rgba(75,52,36,0.1),0_24px_48px_-12px_rgba(75,52,36,0.35)]"
-            >
-              <span className="relative block aspect-[3/4] overflow-hidden bg-sand">
-                <motion.span className="block h-full w-full" variants={developPhoto}>
-                  <PhotoImage
-                    photo={photo}
-                    alt=""
-                    sizes="(min-width: 1152px) 270px, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 47vw"
-                    draggable={false}
-                    className="h-full w-full select-none object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
-                  />
-                </motion.span>
-                <span className="pointer-events-none absolute right-2.5 top-2.5 grid h-9 w-9 scale-75 place-items-center rounded-full bg-ivory/90 text-mocha opacity-0 transition-[opacity,transform] duration-500 ease-out-expo group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
-                  <FiMaximize2 size={15} aria-hidden />
+      {/* As setas ficam sobre as laterais das fotos, onde o olhar já está. */}
+      <div className="relative">
+        <motion.ul
+          key={round}
+          ref={trackRef}
+          onScroll={updatePosition}
+          onPointerEnter={(event) => event.pointerType === 'mouse' && setHovering(true)}
+          onPointerLeave={() => setHovering(false)}
+          onFocus={() => setHovering(true)}
+          onBlur={() => setHovering(false)}
+          className="-mx-3 mt-3 grid snap-x snap-mandatory auto-cols-[calc((100%_-_0.75rem)/2)] grid-flow-col gap-3 overflow-x-auto scroll-px-3 px-3 pb-8 pt-2 [scrollbar-width:none] sm:auto-cols-[calc((100%_-_2rem)/3)] sm:gap-4 lg:auto-cols-[calc((100%_-_3.75rem)/4)] lg:gap-5 [&::-webkit-scrollbar]:hidden"
+          initial="hidden"
+          {...(round === 0
+            ? { whileInView: 'visible', viewport: { once: true, amount: 0.15 } }
+            : { animate: 'visible' })}
+          variants={stagger(0.08)}
+        >
+          {order.map((photo, index) => (
+            <motion.li key={photo.src} variants={frameVariants} className="snap-start">
+              <button
+                type="button"
+                onClick={() => setOpenIndex(index)}
+                aria-label={`Ampliar ${title}, foto ${index + 1} de ${order.length}`}
+                className="print-frame group block w-full cursor-zoom-in transition-[transform,box-shadow] duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-[0_2px_4px_rgba(75,52,36,0.1),0_24px_48px_-12px_rgba(75,52,36,0.35)]"
+              >
+                <span className="relative block aspect-[3/4] overflow-hidden bg-sand">
+                  <motion.span className="block h-full w-full" variants={developPhoto}>
+                    <PhotoImage
+                      photo={photo}
+                      alt=""
+                      sizes="(min-width: 1152px) 270px, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 47vw"
+                      draggable={false}
+                      className="h-full w-full select-none object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                    />
+                  </motion.span>
+                  <span className="pointer-events-none absolute right-2.5 top-2.5 grid h-9 w-9 scale-75 place-items-center rounded-full bg-ivory/90 text-mocha opacity-0 transition-[opacity,transform] duration-500 ease-out-expo group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
+                    <FiMaximize2 size={15} aria-hidden />
+                  </span>
                 </span>
-              </span>
-            </button>
-          </motion.li>
-        ))}
-      </motion.ul>
+              </button>
+            </motion.li>
+          ))}
+        </motion.ul>
+        <SideArrow side="left" onClick={() => goTo(page - 1)} />
+        <SideArrow side="right" onClick={() => goTo(page + 1)} />
+      </div>
 
       <Lightbox
         photos={order}
@@ -213,15 +221,19 @@ export default function PhotoCarousel({ photos, title, header }: PhotoCarouselPr
   );
 }
 
-function ControlButton({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
+/** Seta redonda sobre a lateral da faixa de fotos, centralizada na altura das fotos. */
+function SideArrow({ side, onClick }: { side: 'left' | 'right'; onClick: () => void }) {
+  const isLeft = side === 'left';
   return (
     <button
       type="button"
       onClick={onClick}
-      aria-label={label}
-      className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line text-mocha transition-colors duration-300 hover:border-rosewood hover:bg-rosewood hover:text-ivory"
+      aria-label={isLeft ? 'Fotos anteriores' : 'Próximas fotos'}
+      className={`absolute top-[calc(50%-0.75rem)] z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-ivory/95 text-mocha shadow-print backdrop-blur-sm transition-[background-color,color,transform] duration-300 hover:scale-105 hover:bg-rosewood hover:text-ivory sm:h-12 sm:w-12 ${
+        isLeft ? '-left-1 sm:-left-4 lg:-left-6' : '-right-1 sm:-right-4 lg:-right-6'
+      }`}
     >
-      {children}
+      {isLeft ? <FiChevronLeft size={22} aria-hidden /> : <FiChevronRight size={22} aria-hidden />}
     </button>
   );
 }
