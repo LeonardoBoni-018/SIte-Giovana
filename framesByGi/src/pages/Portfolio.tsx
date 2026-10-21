@@ -39,7 +39,7 @@ export default function Portfolio() {
         <SectionHeader
           as="h1"
           title="Trabalhos"
-          description="Ensaios, casamentos, eventos e vídeos feitos com o celular. A cada visita as fotos aparecem numa ordem diferente; toque em uma para ampliar."
+          description="Ensaios, casamentos, eventos e vídeos feitos com o celular."
         />
       </Reveal>
 
