@@ -139,14 +139,19 @@ export default function Home() {
         </Reveal>
 
         <motion.ul
-          className="mt-10 grid grid-cols-2 gap-x-3 gap-y-6 md:grid-cols-5"
+          className="mt-10 flex flex-wrap justify-center gap-x-3 gap-y-6"
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
           variants={stagger(0.08)}
         >
           {photoCategories.map((category) => (
-            <motion.li key={category.id} variants={fadeUp}>
+            <motion.li
+              key={category.id}
+              variants={fadeUp}
+              // Última linha incompleta fica centralizada: 2 colunas no celular, 4 no tablet, 6 no desktop.
+              className="w-[calc((100%_-_0.75rem)/2)] md:w-[calc((100%_-_2.25rem)/4)] lg:w-[calc((100%_-_3.75rem)/6)]"
+            >
               <Link to={`/trabalhos#${category.id}`} className="group block">
                 <span className="print-frame block">
                 <span className="relative block aspect-[3/4] overflow-hidden bg-sand">
@@ -154,7 +159,7 @@ export default function Home() {
                     <PhotoImage
                       photo={category.photos[category.coverIndex]}
                       alt=""
-                      sizes="(min-width: 1152px) 210px, (min-width: 768px) 19vw, 48vw"
+                      sizes="(min-width: 1152px) 180px, (min-width: 1024px) 16vw, (min-width: 768px) 24vw, 48vw"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]"
                     />
                   </motion.span>

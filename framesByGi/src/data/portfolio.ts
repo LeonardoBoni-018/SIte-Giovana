@@ -89,6 +89,14 @@ export const photoCategories: PhotoCategory[] = [
     photos: numbered('aniversarioInfantil', 1, 9).map(photo)
   },
   {
+    id: 'batizado',
+    coverIndex: 4,
+    title: 'Batizado',
+    description:
+      'A celebração da fé em família: a igreja, os padrinhos, os avós e os gestos espontâneos de quem é o centro do dia.',
+    photos: numbered('batizado', 1, 7).map(photo)
+  },
+  {
     id: 'ensaio-familia',
     coverIndex: 1,
     title: 'Ensaio de família',
