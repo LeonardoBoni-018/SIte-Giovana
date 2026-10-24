@@ -2,6 +2,7 @@ import { photo, type Photo } from '../lib/photos';
 import storyMakerVideo from '../assets/videos/storyMaker.mp4';
 import videoMakerVideo from '../assets/videos/videoMaker.mp4';
 import sameDayVideo from '../assets/videos/sameDay.mp4';
+import festaCasamentoVideo from '../assets/videos/festaCasamento.mp4';
 
 /** Gera a lista `prefixo1.ext`, `prefixo2.ext`… para fotos numeradas em sequência. */
 function numbered(prefix: string, from: number, to: number, ext = 'jpeg'): string[] {
@@ -143,5 +144,12 @@ export const videoWorks: VideoWork[] = [
     description:
       'O vídeo da cerimônia editado e entregue no mesmo dia, para os noivos reviverem e compartilharem ainda durante a festa.',
     src: sameDayVideo
+  },
+  {
+    id: 'festa-casamento',
+    title: 'Festa de casamento',
+    description:
+      'A recepção contada em vídeo: a entrada dos noivos, os brindes, a pista de dança e a alegria dos convidados.',
+    src: festaCasamentoVideo
   }
 ];

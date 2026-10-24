@@ -113,7 +113,7 @@ export default function Portfolio() {
             </h2>
           </Reveal>
           <motion.div
-            className="mt-10 grid gap-14 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 sm:max-lg:[&>*:last-child:nth-child(odd)]:col-span-2"
+            className="mt-10 grid gap-14 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
