@@ -5,7 +5,7 @@ import PhotoCarousel from '../components/gallery/PhotoCarousel';
 import Reveal from '../components/motion/Reveal';
 import SectionHeader from '../components/SectionHeader';
 import VideoPlayer from '../components/VideoPlayer';
-import { photoCategories, videoWorks } from '../data/portfolio';
+import { photoCategories, videoCategories } from '../data/portfolio';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { fadeUp, stagger, viewportOnce } from '../lib/motion';
@@ -112,18 +112,32 @@ export default function Portfolio() {
               Vídeos
             </h2>
           </Reveal>
+          {/* Um player por categoria; categorias com vários trabalhos viram um reel de stories.
+              A última linha incompleta fica centralizada: 1 coluna no celular, 2 no tablet, 3 no desktop. */}
           <motion.div
-            className="mt-10 grid gap-14 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8"
+            className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-14 lg:gap-x-12"
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
             variants={stagger(0.15)}
           >
-            {videoWorks.map((video) => (
-              <motion.article key={video.id} variants={fadeUp} className="text-center">
-                <VideoPlayer src={video.src} label={`Vídeo de exemplo: ${video.title}`} />
-                <h3 className="mt-6 text-xl font-medium">{video.title}</h3>
-                <p className="mx-auto mt-2 max-w-[40ch] text-cocoa">{video.description}</p>
+            {videoCategories.map((category) => (
+              <motion.article
+                key={category.id}
+                id={`video-${category.id}`}
+                variants={fadeUp}
+                className="w-full text-center sm:w-[calc((100%_-_2.5rem)/2)] lg:w-[calc((100%_-_6rem)/3)]"
+              >
+                <VideoPlayer videos={category.videos} label={`Vídeo de exemplo: ${category.title}`} />
+                <h3 className="mt-6 text-xl font-medium">
+                  {category.title}
+                  {category.videos.length > 1 && (
+                    <span className="ml-2 align-middle font-sans text-sm font-normal text-rosewood">
+                      {category.videos.length} vídeos
+                    </span>
+                  )}
+                </h3>
+                <p className="mx-auto mt-2 max-w-[40ch] text-cocoa">{category.description}</p>
               </motion.article>
             ))}
           </motion.div>

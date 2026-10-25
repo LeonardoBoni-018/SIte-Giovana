@@ -3,6 +3,8 @@ import storyMakerVideo from '../assets/videos/storyMaker.mp4';
 import videoMakerVideo from '../assets/videos/videoMaker.mp4';
 import sameDayVideo from '../assets/videos/sameDay.mp4';
 import festaCasamentoVideo from '../assets/videos/festaCasamento.mp4';
+import chaRevelacaoVideo from '../assets/videos/chaRevelacao.mp4';
+import batizadoVideo from '../assets/videos/batizado.mp4';
 
 /** Gera a lista `prefixo1.ext`, `prefixo2.ext`… para fotos numeradas em sequência. */
 function numbered(prefix: string, from: number, to: number, ext = 'jpeg'): string[] {
@@ -18,11 +20,15 @@ export interface PhotoCategory {
   coverIndex: number;
 }
 
-export interface VideoWork {
+/**
+ * Uma categoria de vídeo pode ter vários trabalhos: eles tocam em sequência no mesmo player,
+ * como stories. Para incluir um trabalho novo, basta acrescentar o arquivo em `videos`.
+ */
+export interface VideoCategory {
   id: string;
   title: string;
   description: string;
-  src: string;
+  videos: string[];
 }
 
 export const photoCategories: PhotoCategory[] = [
@@ -123,33 +129,43 @@ export const photoCategories: PhotoCategory[] = [
   }
 ];
 
-export const videoWorks: VideoWork[] = [
+export const videoCategories: VideoCategory[] = [
   {
     id: 'storymaker',
     title: 'Storymaker',
-    description:
-      'Stories autorais com narrativa visual pensada para engajar e apresentar o seu estilo.',
-    src: storyMakerVideo
+    description: 'Stories autorais com narrativa visual pensada para engajar e apresentar o seu estilo.',
+    videos: [storyMakerVideo]
   },
   {
     id: 'videomaker',
     title: 'Videomaker',
-    description:
-      'Vídeos com cortes dinâmicos e acabamento profissional para divulgar serviços nas redes sociais.',
-    src: videoMakerVideo
+    description: 'Vídeos com cortes dinâmicos e acabamento profissional para divulgar serviços nas redes sociais.',
+    videos: [videoMakerVideo]
   },
   {
     id: 'same-day',
     title: 'Same day',
     description:
       'O vídeo da cerimônia editado e entregue no mesmo dia, para os noivos reviverem e compartilharem ainda durante a festa.',
-    src: sameDayVideo
+    videos: [sameDayVideo]
   },
   {
     id: 'festa-casamento',
     title: 'Festa de casamento',
     description:
       'A recepção contada em vídeo: a entrada dos noivos, os brindes, a pista de dança e a alegria dos convidados.',
-    src: festaCasamentoVideo
+    videos: [festaCasamentoVideo]
+  },
+  {
+    id: 'cha-revelacao',
+    title: 'Chá revelação',
+    description: 'A expectativa, a contagem regressiva e a emoção do momento em que a família descobre a novidade.',
+    videos: [chaRevelacaoVideo]
+  },
+  {
+    id: 'batizado',
+    title: 'Batizado',
+    description: 'A cerimônia na igreja e o carinho da família, dos padrinhos e dos avós em volta de quem está sendo batizado.',
+    videos: [batizadoVideo]
   }
 ];
