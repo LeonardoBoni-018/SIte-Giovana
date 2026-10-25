@@ -5,6 +5,8 @@ import sameDayVideo from '../assets/videos/sameDay.mp4';
 import festaCasamentoVideo from '../assets/videos/festaCasamento.mp4';
 import chaRevelacaoVideo from '../assets/videos/chaRevelacao.mp4';
 import batizadoVideo from '../assets/videos/batizado.mp4';
+import makingOfVideo from '../assets/videos/makingOf.mp4';
+import palestrasVideo from '../assets/videos/palestras.mp4';
 
 /** Gera a lista `prefixo1.ext`, `prefixo2.ext`… para fotos numeradas em sequência. */
 function numbered(prefix: string, from: number, to: number, ext = 'jpeg'): string[] {
@@ -167,5 +169,17 @@ export const videoCategories: VideoCategory[] = [
     title: 'Batizado',
     description: 'A cerimônia na igreja e o carinho da família, dos padrinhos e dos avós em volta de quem está sendo batizado.',
     videos: [batizadoVideo]
+  },
+  {
+    id: 'making-of-noiva',
+    title: 'Making of da noiva',
+    description: 'A preparação da noiva em vídeo: o vestido, o véu, os últimos ajustes e a emoção antes de seguir para a cerimônia.',
+    videos: [makingOfVideo]
+  },
+  {
+    id: 'palestras',
+    title: 'Palestras',
+    description: 'Cobertura de congressos e palestras, com a fala no palco, a interação com o público e os bastidores do evento.',
+    videos: [palestrasVideo]
   }
 ];
