@@ -4,6 +4,8 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 interface VideoPlayerProps {
   /** Um ou mais vídeos da mesma categoria. Com mais de um, o player vira um "reel" de stories. */
   videos: string[];
+  /** Capa de cada vídeo: é o que aparece até a pessoa dar play, sem baixar o vídeo. */
+  posters: string[];
   label: string;
 }
 
@@ -17,7 +19,7 @@ const SWIPE_THRESHOLD = 50;
  * trabalhos há e o progresso do atual; ao terminar um vídeo, o próximo começa. Dá para trocar
  * pelas setas, tocando num segmento ou deslizando para o lado no celular.
  */
-export default function VideoPlayer({ videos, label }: VideoPlayerProps) {
+export default function VideoPlayer({ videos, posters, label }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [index, setIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -117,20 +119,22 @@ export default function VideoPlayer({ videos, label }: VideoPlayerProps) {
 
   return (
     <div
-      className="print-frame relative mx-auto w-full max-w-[320px]"
+      className="group/phone relative mx-auto w-full max-w-[320px] rounded-[2rem] bg-mocha p-2 shadow-print transition-transform duration-700 ease-out-expo hover:-translate-y-2 hover:rotate-[-0.8deg]"
       {...(isReel && { onTouchStart, onTouchEnd })}
     >
       <video
         ref={videoRef}
-        // #t=0.1 faz o navegador mostrar o primeiro quadro como capa antes de tocar.
-        src={`${videos[index]}#t=0.1`}
+        src={videos[index]}
+        poster={posters[index]}
         aria-label={isReel ? `${label}, vídeo ${index + 1} de ${videos.length}` : label}
-        className="aspect-[9/16] w-full bg-mocha object-cover"
+        className="aspect-[9/16] w-full rounded-[1.5rem] bg-mocha object-cover"
         controls
         muted
         loop={!isReel}
         playsInline
-        preload="metadata"
+        // "none": nada do vídeo é baixado até ele tocar. Com 8 players na página, "metadata" baixava
+        // trechos de todos de uma vez, o que pesa no 4G e podia travar a página no celular.
+        preload="none"
       >
         Seu navegador não suporta vídeo.
       </video>

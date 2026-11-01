@@ -14,7 +14,8 @@ import ButtonLink from '../components/ui/ButtonLink';
 import { site } from '../config/site';
 import { photoCategories } from '../data/portfolio';
 import { usePageTitle } from '../hooks/usePageTitle';
-import { developPhoto, fadeUp, stagger, viewportOnce } from '../lib/motion';
+import StoryPhone, { type StorySlide } from '../components/StoryPhone';
+import { developPhoto, easeOutExpo, fadeUp, stagger, viewportOnce } from '../lib/motion';
 import { pickRandom, shuffle } from '../lib/random';
 
 /**
@@ -33,6 +34,16 @@ function drawHeroPhotos(): { main: HeroPhoto; left: HeroPhoto; right: HeroPhoto 
     });
   return { main, left, right };
 }
+
+const storySlides: StorySlide[] = [
+  { id: 'casamento', caption: 'A emoção do sim', sticker: 'same day' },
+  { id: 'ensaio-feminino', caption: 'Leveza em cada detalhe', sticker: 'ensaio' },
+  { id: 'aniversario-infantil', caption: 'Brincar também é história', sticker: 'novo' },
+  { id: 'palestras', caption: 'Quem fala, quem sente', sticker: 'evento' }
+].flatMap(({ id, caption, sticker }) => {
+  const category = photoCategories.find((item) => item.id === id);
+  return category ? [{ photo: category.photos[category.coverIndex], caption, sticker }] : [];
+});
 
 const services = ['Fotografia mobile', 'Videomaker', 'Storymaker'];
 
@@ -98,6 +109,29 @@ export default function Home() {
       </section>
 
       <Marquee items={marqueeItems} />
+
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-24">
+        <Reveal className="order-2 lg:order-1">
+          <SectionHeader
+            title="Seu momento, contado em stories"
+            description="Vídeos verticais pensados para o celular: cortes dinâmicos, legendas e ritmo de quem vive nas redes. Deslize pelos exemplos ao lado."
+          />
+          <div className="mt-8">
+            <ButtonLink href="/trabalhos#videos" variant="secondary" arrow>
+              Ver vídeos
+            </ButtonLink>
+          </div>
+        </Reveal>
+        <motion.div
+          className="order-1 lg:order-2"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 1, ease: easeOutExpo }}
+        >
+          <StoryPhone slides={storySlides} />
+        </motion.div>
+      </section>
 
       <section aria-labelledby="diferenciais" className="border-y border-line bg-ivory">
         <h2 id="diferenciais" className="sr-only">

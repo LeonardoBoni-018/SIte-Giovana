@@ -7,6 +7,14 @@ import chaRevelacaoVideo from '../assets/videos/chaRevelacao.mp4';
 import batizadoVideo from '../assets/videos/batizado.mp4';
 import makingOfVideo from '../assets/videos/makingOf.mp4';
 import palestrasVideo from '../assets/videos/palestras.mp4';
+import storyMakerPoster from '../assets/videos/posters/storyMaker.jpg';
+import videoMakerPoster from '../assets/videos/posters/videoMaker.jpg';
+import sameDayPoster from '../assets/videos/posters/sameDay.jpg';
+import festaCasamentoPoster from '../assets/videos/posters/festaCasamento.jpg';
+import chaRevelacaoPoster from '../assets/videos/posters/chaRevelacao.jpg';
+import batizadoPoster from '../assets/videos/posters/batizado.jpg';
+import makingOfPoster from '../assets/videos/posters/makingOf.jpg';
+import palestrasPoster from '../assets/videos/posters/palestras.jpg';
 
 /** Gera a lista `prefixo1.ext`, `prefixo2.ext`… para fotos numeradas em sequência. */
 function numbered(prefix: string, from: number, to: number, ext = 'jpeg'): string[] {
@@ -31,6 +39,8 @@ export interface VideoCategory {
   title: string;
   description: string;
   videos: string[];
+  /** Capa leve (primeiro quadro) de cada vídeo, na mesma ordem de `videos`. */
+  posters: string[];
 }
 
 export const photoCategories: PhotoCategory[] = [
@@ -136,50 +146,58 @@ export const videoCategories: VideoCategory[] = [
     id: 'storymaker',
     title: 'Storymaker',
     description: 'Stories autorais com narrativa visual pensada para engajar e apresentar o seu estilo.',
-    videos: [storyMakerVideo]
+    videos: [storyMakerVideo],
+    posters: [storyMakerPoster]
   },
   {
     id: 'videomaker',
     title: 'Videomaker',
     description: 'Vídeos com cortes dinâmicos e acabamento profissional para divulgar serviços nas redes sociais.',
-    videos: [videoMakerVideo]
+    videos: [videoMakerVideo],
+    posters: [videoMakerPoster]
   },
   {
     id: 'same-day',
     title: 'Same day',
     description:
       'O vídeo da cerimônia editado e entregue no mesmo dia, para os noivos reviverem e compartilharem ainda durante a festa.',
-    videos: [sameDayVideo]
+    videos: [sameDayVideo],
+    posters: [sameDayPoster]
   },
   {
     id: 'festa-casamento',
     title: 'Festa de casamento',
     description:
       'A recepção contada em vídeo: a entrada dos noivos, os brindes, a pista de dança e a alegria dos convidados.',
-    videos: [festaCasamentoVideo]
+    videos: [festaCasamentoVideo],
+    posters: [festaCasamentoPoster]
   },
   {
     id: 'cha-revelacao',
     title: 'Chá revelação',
     description: 'A expectativa, a contagem regressiva e a emoção do momento em que a família descobre a novidade.',
-    videos: [chaRevelacaoVideo]
+    videos: [chaRevelacaoVideo],
+    posters: [chaRevelacaoPoster]
   },
   {
     id: 'batizado',
     title: 'Batizado',
     description: 'A cerimônia na igreja e o carinho da família, dos padrinhos e dos avós em volta de quem está sendo batizado.',
-    videos: [batizadoVideo]
+    videos: [batizadoVideo],
+    posters: [batizadoPoster]
   },
   {
     id: 'making-of-noiva',
     title: 'Making of da noiva',
     description: 'A preparação da noiva em vídeo: o vestido, o véu, os últimos ajustes e a emoção antes de seguir para a cerimônia.',
-    videos: [makingOfVideo]
+    videos: [makingOfVideo],
+    posters: [makingOfPoster]
   },
   {
     id: 'palestras',
     title: 'Palestras',
     description: 'Cobertura de congressos e palestras, com a fala no palco, a interação com o público e os bastidores do evento.',
-    videos: [palestrasVideo]
+    videos: [palestrasVideo],
+    posters: [palestrasPoster]
   }
 ];
